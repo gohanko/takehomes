@@ -23,10 +23,8 @@ type Transaction = {
     amount: TransactionAmount
 }
 
-export default function handler(
-    req: NextApiRequest,
-    res: NextApiResponse,
-) {
+const GET = (
+) => {
     const transactionList: Array<Transaction> = [
         {
             date: "",
@@ -43,7 +41,11 @@ export default function handler(
         }
     ]
 
-    res.status(200).json({
+    return Response.json({
         transactions: transactionList
     })
+}
+
+export {
+    GET
 }
