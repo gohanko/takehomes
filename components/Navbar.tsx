@@ -23,7 +23,7 @@ const Navbar = () => {
                         aria-label="WindUI logo"
                         aria-current="page"
                         className="flex items-center gap-2 py-3 text-lg whitespace-nowrap focus:outline-none"
-                        href="javascript:void(0)"
+                        href="/"
                     >
                         AEON
                     </a>

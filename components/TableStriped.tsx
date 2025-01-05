@@ -19,8 +19,8 @@ const TableStriped = ({
                         <th scope="col" className="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Transaction Type</th>
                         <th scope="col" className="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">Amount</th>
                     </tr>
-                    { transactions.map((transaction) => (
-                        <tr className="odd:bg-slate-50">
+                    { transactions.map((transaction, index) => (
+                        <tr className="odd:bg-slate-50" key={index}>
                             <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">{transaction.date}</td>
                             <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">{transaction.referenceId}</td>
                             <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">

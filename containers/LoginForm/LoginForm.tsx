@@ -5,6 +5,7 @@ import LoginFormInput from "./LoginFormInput"
 import LoginFormText from "./LoginFormText"
 import { useAuthStore } from "@/stores/useAuthStore"
 import { useRouter } from "next/navigation"
+import { hashedPassword } from "@/utility/hashedPassword"
 
 const LoginForm = () => {
     const [steps, setSteps] = useState(0)
@@ -32,7 +33,11 @@ const LoginForm = () => {
 
     const setLoggedIn = useAuthStore((state) => state.setLoggedIn) 
     const onCompletePassword = async () => {
-        const encryptedPassword = password
+        if (!password) {
+            return
+        }
+
+        const encryptedPassword = hashedPassword(password, secureWord)
 
         const response = await fetch('/api/login/', {
             method: "post",

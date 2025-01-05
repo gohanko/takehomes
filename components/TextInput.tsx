@@ -17,6 +17,7 @@ const TextInput = ({
             type={type}
             value={value}
             name="id-l13"
+            required
             placeholder={placeholder}
             className="relative w-full h-12 px-4 pr-12 placeholder-transparent transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
             onInput={(event) => onInput((event.target as HTMLInputElement).value)}
