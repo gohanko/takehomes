@@ -1,7 +1,7 @@
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
 
-const Home = () =>  (
-	<Navbar />
+const Page = () =>  (
+	<div></div>
 )
 
-export default Home
+export default Page
