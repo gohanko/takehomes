@@ -3,6 +3,8 @@
 import { useState } from "react"
 import LoginFormInput from "./LoginFormInput"
 import LoginFormText from "./LoginFormText"
+import { useAuthStore } from "@/stores/useAuthStore"
+import { useRouter } from "next/navigation"
 
 const LoginForm = () => {
     const [steps, setSteps] = useState(0)
@@ -11,7 +13,13 @@ const LoginForm = () => {
     const [password, setPassword] = useState('')
     const [secureWord, setSecureWord] = useState('')
 
+    const router = useRouter()
+    
     const onCompleteUsername = async () => {
+        if (!username) {
+            return
+        }
+
         let data = await fetch('/api/getSecureWord')
         const newSecureWord = await data.json()
 
@@ -22,6 +30,7 @@ const LoginForm = () => {
         setSteps(steps + 1)
     }
 
+    const setLoggedIn = useAuthStore((state) => state.setLoggedIn) 
     const onCompletePassword = async () => {
         const encryptedPassword = password
 
@@ -34,6 +43,7 @@ const LoginForm = () => {
         })
 
         if (response.status == 200) {
+            setLoggedIn()
             setSteps(steps + 1)
         }
     }
@@ -69,7 +79,9 @@ const LoginForm = () => {
                 title="Login Successful"
                 text="You've successfully logged in!"
             />,
-            onNext: () => {}
+            onNext: () => {
+                router.push('/dashboard/')
+            }
         }
     ]
 
@@ -79,7 +91,7 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 min-w-1/2 flex-1 p-6">
+        <div className="overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 min-w-1/2 p-8">
             { loginFlow[steps].component }
             
             <div className="flex justify-end">

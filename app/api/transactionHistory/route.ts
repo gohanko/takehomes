@@ -2,8 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 
 type TransactionAmount = {
-    amount: Number,
-    currencyType: String,
+    amount: number,
+    currencyType: string,
 }
 
 enum TransactionType {
@@ -11,24 +11,101 @@ enum TransactionType {
 }
 
 type TransactionRecipient = {
-    name: String,
-    reference: String,
+    name: string,
+    reference: string,
 }
 
-type Transaction = {
-    date: String,
-    referenceId: String,
+export type Transaction = {
+    date: string,
+    referenceId: string,
     to: TransactionRecipient,
     type: TransactionType,
     amount: TransactionAmount
 }
 
-const GET = (
-) => {
+const GET = () => {
     const transactionList: Array<Transaction> = [
         {
-            date: "",
-            referenceId: "",
+            date: "2022/01/20",
+            referenceId: "XYD299371933",
+            to: {
+                name: "Transaction SDN. BHD.",
+                reference: "Reference for you!",
+            },
+            type: TransactionType.DUITNOW,
+            amount: {
+                amount: 1200,
+                currencyType: "MYR"
+            }
+        },
+        {
+            date: "2022/01/20",
+            referenceId: "XYD299371933",
+            to: {
+                name: "Transaction SDN. BHD.",
+                reference: "Reference for you!",
+            },
+            type: TransactionType.DUITNOW,
+            amount: {
+                amount: 1200,
+                currencyType: "MYR"
+            }
+        },
+        {
+            date: "2022/01/20",
+            referenceId: "XYD299371933",
+            to: {
+                name: "Transaction SDN. BHD.",
+                reference: "Reference for you!",
+            },
+            type: TransactionType.DUITNOW,
+            amount: {
+                amount: 1200,
+                currencyType: "MYR"
+            }
+        },
+        {
+            date: "2022/01/20",
+            referenceId: "XYD299371933",
+            to: {
+                name: "Transaction SDN. BHD.",
+                reference: "Reference for you!",
+            },
+            type: TransactionType.DUITNOW,
+            amount: {
+                amount: 1200,
+                currencyType: "MYR"
+            }
+        },
+        {
+            date: "2022/01/20",
+            referenceId: "XYD299371933",
+            to: {
+                name: "Transaction SDN. BHD.",
+                reference: "Reference for you!",
+            },
+            type: TransactionType.DUITNOW,
+            amount: {
+                amount: 1200,
+                currencyType: "MYR"
+            }
+        },
+        {
+            date: "2022/01/20",
+            referenceId: "XYD299371933",
+            to: {
+                name: "Transaction SDN. BHD.",
+                reference: "Reference for you!",
+            },
+            type: TransactionType.DUITNOW,
+            amount: {
+                amount: 1200,
+                currencyType: "MYR"
+            }
+        },
+        {
+            date: "2022/01/20",
+            referenceId: "XYD299371933",
             to: {
                 name: "Transaction SDN. BHD.",
                 reference: "Reference for you!",

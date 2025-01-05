@@ -3,9 +3,12 @@
 import { useState } from "react"
 import SearchInput from "./SearchInput"
 import Link from "next/link"
+import { useAuthStore } from "@/stores/useAuthStore"
 
 const Navbar = () => {
     const [isToggleOpen, setIsToggleOpen] = useState(false)
+
+    const isLoggedIn = useAuthStore(store => store.isLoggedIn)
 
     return (
         <header className="relative z-20 w-full border-b shadow-lg border-slate-200 bg-white/90 shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
@@ -137,10 +140,12 @@ const Navbar = () => {
                     </ul>
                     <div className="flex items-center px-6 ml-auto lg:ml-0 lg:p-0 gap-2">
                         <SearchInput />
-
-                        <button className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded shadow-md whitespace-nowrap bg-emerald-500 shadow-emerald-200 hover:bg-emerald-600 hover:shadow-sm hover:shadow-emerald-200 focus:bg-emerald-700 focus:shadow-sm focus:shadow-emerald-200 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
-                            <Link href="login">Login</Link>
-                        </button>
+                        
+                        { !isLoggedIn && 
+                            <button className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded shadow-md whitespace-nowrap bg-emerald-500 shadow-emerald-200 hover:bg-emerald-600 hover:shadow-sm hover:shadow-emerald-200 focus:bg-emerald-700 focus:shadow-sm focus:shadow-emerald-200 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+                                <Link href="login">Login</Link>
+                            </button>
+                        }
                     </div>
                 </nav>
             </div>

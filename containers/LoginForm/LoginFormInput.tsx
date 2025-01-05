@@ -13,7 +13,7 @@ const LoginFormInput = ({
     input,
     onInput
 }: TLoginFormInputProps) => (
-    <div >
+    <>
         <header className="mb-2 text-left">
             <h3 className="text-xl font-medium text-slate-700">{ title }</h3>
         </header>
@@ -25,7 +25,7 @@ const LoginFormInput = ({
                 onInput={onInput}
             />
         </div>
-    </div>
+    </>
 )
 
 export default LoginFormInput
