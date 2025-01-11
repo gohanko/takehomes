@@ -85,7 +85,7 @@ class TestDeposit(unittest.TestCase):
         self.assertEqual(result[PortfolioType.RETIREMENT], 1800)
         self.assertEqual(result[PortfolioType.DEFAULT], 14000)
 
-    def test_should_stop_adding_when_corresponding_deposit(self):
+    def test_should_stop_processing_when_corresponding_deposit_doesnt_exist(self):
         deposit_plans = [
             DepositPlanType.ONE_TIME,
             DepositPlanType.RECURRING_MONTHLY
