@@ -20,6 +20,9 @@ def deposit(
     
     for index, deposit_plan in enumerate(deposit_plans):
         configuration = get_deposit_plan_configuration(deposit_plan)
+        if (index + 1) > len(deposit_amounts):
+            break
+
         deposit_amount = deposit_amounts[index]
 
         for key in portfolios.keys():

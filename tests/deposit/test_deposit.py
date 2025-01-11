@@ -84,3 +84,19 @@ class TestDeposit(unittest.TestCase):
         self.assertEqual(result[PortfolioType.HIGH_RISK], 30000)
         self.assertEqual(result[PortfolioType.RETIREMENT], 1800)
         self.assertEqual(result[PortfolioType.DEFAULT], 14000)
+
+    def test_should_stop_adding_when_corresponding_deposit(self):
+        deposit_plans = [
+            DepositPlanType.ONE_TIME,
+            DepositPlanType.RECURRING_MONTHLY
+        ]
+
+        deposit_amounts = [
+            10500,
+        ]
+
+        result = deposit(deposit_plans, deposit_amounts)
+
+        self.assertEqual(result[PortfolioType.HIGH_RISK], 40000)
+        self.assertEqual(result[PortfolioType.RETIREMENT], 2300)
+        self.assertEqual(result[PortfolioType.DEFAULT], 14000)
