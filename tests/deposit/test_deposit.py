@@ -63,8 +63,8 @@ class TestDeposit(unittest.TestCase):
 
         result = deposit(deposit_plans, deposit_amounts)
 
-        self.assertEqual(result[PortfolioType.HIGH_RISK], 20000)
-        self.assertEqual(result[PortfolioType.RETIREMENT], 1200)
+        self.assertEqual(result[PortfolioType.HIGH_RISK], 10000)
+        self.assertEqual(result[PortfolioType.RETIREMENT], 600)
         self.assertEqual(result[PortfolioType.DEFAULT], 11000)
 
     def test_should_divert_extra_funds_to_default_portfolio(self):
@@ -81,9 +81,9 @@ class TestDeposit(unittest.TestCase):
 
         result = deposit(deposit_plans, deposit_amounts)
 
-        self.assertEqual(result[PortfolioType.HIGH_RISK], 30000)
-        self.assertEqual(result[PortfolioType.RETIREMENT], 1800)
-        self.assertEqual(result[PortfolioType.DEFAULT], 14000)
+        self.assertEqual(result[PortfolioType.HIGH_RISK], 10000)
+        self.assertEqual(result[PortfolioType.RETIREMENT], 600)
+        self.assertEqual(result[PortfolioType.DEFAULT], 3000)
 
     def test_should_stop_processing_when_corresponding_deposit_doesnt_exist(self):
         deposit_plans = [
@@ -97,6 +97,22 @@ class TestDeposit(unittest.TestCase):
 
         result = deposit(deposit_plans, deposit_amounts)
 
-        self.assertEqual(result[PortfolioType.HIGH_RISK], 40000)
-        self.assertEqual(result[PortfolioType.RETIREMENT], 2300)
-        self.assertEqual(result[PortfolioType.DEFAULT], 14000)
+        self.assertEqual(result[PortfolioType.HIGH_RISK], 10000)
+        self.assertEqual(result[PortfolioType.RETIREMENT], 500)
+        self.assertEqual(result[PortfolioType.DEFAULT], 0)
+
+    def test_should_should_properly_add_if_amount_less_than_defined(self):
+        deposit_plans = [
+            DepositPlanType.ONE_TIME,
+            DepositPlanType.RECURRING_MONTHLY
+        ]
+
+        deposit_amounts = [
+            200,
+        ]
+
+        result = deposit(deposit_plans, deposit_amounts)
+
+        self.assertEqual(result[PortfolioType.HIGH_RISK], 200)
+        self.assertEqual(result[PortfolioType.RETIREMENT], 0)
+        self.assertEqual(result[PortfolioType.DEFAULT], 0)
