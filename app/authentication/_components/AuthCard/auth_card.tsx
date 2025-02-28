@@ -7,7 +7,7 @@ type TAuthCardProps = {
 const AuthCard = ({
     children
 }: TAuthCardProps) => (
-    <div className="card bg-base-300 h-full p-12 shadow-2xl">
+    <div className="card bg-base-300 h-full p-12 shadow-2xl overflow-auto">
         { children }
     </div>
 )

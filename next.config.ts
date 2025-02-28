@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
                 destination: '/authentication/login',
                 permanent: true,
             },
+            {
+                source: '/authentication',
+                destination: '/authentication/login',
+                permanent: true,
+            },
+            {
+                source: '/profile',
+                destination: '/profile/basic_details',
+                permanent: true,
+            },
         ]
     },
 };
