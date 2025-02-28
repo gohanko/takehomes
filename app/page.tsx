@@ -1,6 +1,6 @@
 
-const handler = () =>  (
-    <></>
-)
+const handler = () =>  {
+    return <></>
+}
 
 export default handler;
