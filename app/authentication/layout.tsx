@@ -18,7 +18,7 @@ const AuthenticationLayout = ({
             className="flex-1 flex lg:w-full lg:h-full rounded-3xl"
         />
 
-        <div className="flex-2 flex flex-col w-full lg:w-1/3 xl:w-1/4 justify-center">
+        <div className="flex-1 flex flex-col w-full lg:w-1/3 xl:w-1/4 justify-center">
             { children }
         </div>
     </div>

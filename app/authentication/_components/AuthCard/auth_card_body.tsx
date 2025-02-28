@@ -7,7 +7,7 @@ type TAuthCardBodyProps = {
 const AuthCardBody = ({
     children
 }: TAuthCardBodyProps) => (
-    <div className="card-body">
+    <div className="card-body gap-10">
         { children }
     </div>
 )

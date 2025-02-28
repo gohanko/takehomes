@@ -7,10 +7,10 @@ const handler = () => (
     <AuthCard>
         <AuthCard.Body>
             <AuthCard.Body.Header 
-                title={"Sign in into your account"}
+                title={"Log in to your account"}
             >
                 <span className="text-base-content">
-                    Not a member? <Link className="link-primary" href="/authentication/register">Register here</Link>
+                    Not yet a member? <Link className="link-primary" href="/authentication/register">Register</Link>
                 </span>
             </AuthCard.Body.Header>
             <AuthForm action={handleLogin}>   
@@ -29,7 +29,7 @@ const handler = () => (
                 />
                 <AuthForm.RememberMe />
 
-                <AuthForm.Button label="Login" />
+                <AuthForm.Button label="Log In" />
             </AuthForm>
         </AuthCard.Body>
     </AuthCard>

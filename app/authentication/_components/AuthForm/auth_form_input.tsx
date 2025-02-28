@@ -2,7 +2,7 @@
 type TAuthFormInputProps = {
     label: string
     placeholder: string
-    type: "email" | "password"
+    type: "email" | "password" | "text"
     required: boolean
 }
 
@@ -12,7 +12,7 @@ const AuthFormInput = ({
     required,
     type,
 }: TAuthFormInputProps) => (
-    <div className="form-control">
+    <div className="form-control grow">
         <label className="label">
             <span className="label-text">{ label }</span>
         </label>

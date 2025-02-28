@@ -13,10 +13,25 @@ const handler = () => {
                     title={"Create an account"}
                 >
                     <span className="text-base-content">
-                        Have an account? <Link className="link-primary" href="/authentication/login">Login here</Link>
+                        Already have an account? <Link className="link-primary" href="/authentication/login">Log in</Link>
                     </span>
                 </AuthCard.Body.Header>
-                <AuthForm action={handleRegistration}>   
+                <AuthForm action={handleRegistration}>
+                    <div className='flex flex-row gap-5'>
+                        <AuthForm.Input
+                            label='First Name'
+                            placeholder='First Name'
+                            type="text"
+                            required={true}
+                        />
+
+                        <AuthForm.Input
+                            label='Last Name'
+                            placeholder='Last Name'
+                            type="text"
+                            required={true}
+                        />
+                    </div>
                     <AuthForm.Input
                         label={"Email"}
                         placeholder={"Email"}
@@ -26,11 +41,11 @@ const handler = () => {
 
                     <AuthForm.Input
                         label={"Password"}
-                        placeholder={"password"}
+                        placeholder={"Password"}
                         type={"password"}
                         required={true}
                     />
-                    <AuthForm.Button label="Register" />
+                    <AuthForm.Button label="Create account" />
                 </AuthForm>
             </AuthCard.Body>
         </AuthCard>
