@@ -1,18 +1,21 @@
+import classNames from "classnames"
 
-type TAuthFormInputProps = {
+type TFormInputProps = {
     label: string
     placeholder: string
-    type: "email" | "password" | "text"
+    type: "email" | "password" | "text" | "datetime-local"
     required: boolean
+    className?: string
 }
 
-const AuthFormInput = ({
+const FormInput = ({
     label,
     placeholder,
     required,
     type,
-}: TAuthFormInputProps) => (
-    <div className="form-control grow">
+    className
+}: TFormInputProps) => (
+    <div className={classNames("form-control", className)}>
         <label className="label">
             <span className="label-text">{ label }</span>
         </label>
@@ -25,4 +28,4 @@ const AuthFormInput = ({
     </div>
 )
 
-export default AuthFormInput
+export default FormInput

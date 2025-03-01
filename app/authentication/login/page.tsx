@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { handleLogin } from "./actions";
-import AuthForm from "../_components/AuthForm";
+import Form from "../../_components/Form";
 import AuthCard from "../_components/AuthCard";
 
 const handler = () => (
@@ -13,24 +13,27 @@ const handler = () => (
                     Not yet a member? <Link className="link-primary" href="/authentication/register">Register</Link>
                 </span>
             </AuthCard.Body.Header>
-            <AuthForm action={handleLogin}>   
-                <AuthForm.Input
+            <Form action={handleLogin}>   
+                <Form.Input
                     label={"Email"}
                     placeholder={"Email"}
                     type={"email"}
                     required={true}
                 />
 
-                <AuthForm.Input
+                <Form.Input
                     label={"Password"}
                     placeholder={"password"}
                     type={"password"}
                     required={true}
                 />
-                <AuthForm.RememberMe />
+                <Form.Checkbox
+                    label='Remember me'
+                    defaultChecked={true}
+                />
 
-                <AuthForm.Button label="Log In" />
-            </AuthForm>
+                <Form.Button label="Log In" />
+            </Form>
         </AuthCard.Body>
     </AuthCard>
 )
