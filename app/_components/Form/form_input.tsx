@@ -2,8 +2,8 @@ import classNames from "classnames"
 
 type TFormInputProps = {
     label: string
-    placeholder: string
-    type: "email" | "password" | "text" | "datetime-local"
+    placeholder?: string
+    type: "email" | "password" | "text" | "date"
     required: boolean
     className?: string
 }

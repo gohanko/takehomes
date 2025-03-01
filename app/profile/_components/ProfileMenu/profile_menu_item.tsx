@@ -14,7 +14,7 @@ const ProfileMenuItem = ({
 }: TProfileMenuItemProps) => (
     <li>
         <Link 
-            className={classNames({ "active": isActive })} 
+            className={classNames({ "menu-active": isActive })} 
             href={link}
         >
             {label}

@@ -7,7 +7,7 @@ type TProfileViewerMenuProps = {
 const ProfileMenu = ({
     children
 }: TProfileViewerMenuProps) => (
-    <ul className="menu bg-base-200 rounded-box w-56">
+    <ul className="menu menu-md bg-base-200 rounded-box w-full">
         { children}
     </ul>
 )
