@@ -14,12 +14,12 @@ type TBackgroundImageAdditionalProps = Omit<
     keyof TBackgroundImageProps
 >;
 
-export default function BackgroundImage({
+const BackgroundImage = ({
     children,
     className,
     image,
     ...props
-}: TBackgroundImageProps & TBackgroundImageAdditionalProps) {
+}: TBackgroundImageProps & TBackgroundImageAdditionalProps) => {
     return (
         <div
             className={classNames("lg:relative", "overflow-hidden", className)}
@@ -30,3 +30,5 @@ export default function BackgroundImage({
         </div>
     );
 }
+
+export default BackgroundImage

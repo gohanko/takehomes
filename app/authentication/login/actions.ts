@@ -1,38 +1,26 @@
 "use server"
 
-import { FormState } from "@/app/_lib/definitions"
+import { z } from 'zod'
 import { redirect } from "next/navigation"
-import { prisma } from '@/app/_lib/prisma'
-import { LoginFormSchema } from '@/app/_lib/definitions'
-import bcrypt from 'bcrypt'
-import { createSession } from "@/app/_lib/session"
+import { createSession } from "@/app/_utility/session"
+import { getUserByEmail } from "@/app/_lib/_database/user"
+import { verifyPassword } from "@/app/_utility/password"
 
-const validateFormData = (formData: FormData) => {
+const LoginFormSchema = z.object({
+    email: z.string().email({ message: 'Please enter a valid email.' }).trim(),
+    password: z
+        .string()
+        .min(8, { message: 'Be at least 8 characters long' })
+        .regex(/[a-zA-Z]/, { message: 'Contain at least one letter.' })
+        .regex(/[0-9]/, { message: 'Contain at least one number.' })
+        .trim(),
+})
+
+export const login = async (state: LoginFormState, formData: FormData) => {
     const validatedFields = LoginFormSchema.safeParse({
         email: formData.get("email"),
         password: formData.get("password")
     })
-
-    return validatedFields
-}
-
-const verifyPassword = async (password: string, stored_hashed_password: string) => {
-    const isVerified = await bcrypt.compare(password, stored_hashed_password)
-    return isVerified
-}
-
-const getUser = async (email: string) => {
-    const user = await prisma.user.findUnique({
-        where: {
-            email: email
-        }
-    })
-
-    return user
-}
-
-export const login = async (state: FormState, formData: FormData) => {
-    const validatedFields = validateFormData(formData)
     if (!validatedFields.success) {
         return { errors: validatedFields.error.flatten().fieldErrors }
     }
@@ -42,7 +30,7 @@ export const login = async (state: FormState, formData: FormData) => {
         password
     } = validatedFields.data;
 
-    const user = await getUser(email)
+    const user = await getUserByEmail(email)
     if (!user) {
         return { message: "Email or password must be correct. !" }
     }
