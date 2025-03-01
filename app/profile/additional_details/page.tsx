@@ -25,7 +25,6 @@ const handler = () =>  (
             </div>
 
             <div className="flex flex-row gap-5">
-                <Form.Select label="Country" placeholder="Country" options={["Country"]} className="flex-1"/>
                 <Form.Select label="State" placeholder="State" options={["Sarawak"]} className="flex-1"/>
             </div>
 

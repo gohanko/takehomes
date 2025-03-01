@@ -19,7 +19,13 @@ enum Salutation {
 enum Gender {
   Male
   Female
-  Others
+}
+
+enum PreferenceType {
+  HOBBIES
+  MUSIC
+  MOVIETVSHOW
+  SPORTS
 }
 
 model User {
@@ -31,39 +37,58 @@ model User {
 
 model Address {
   id       Int       @id @default(autoincrement())
-  street   String
-  city     String
+  street_number   String
+  street_name String
+  postcode String
+  city_town     String
   state    String
-  country  String
-  zip_code String
-  Profile  Profile[]
+  profile  Profile[]
 }
 
 model Preference {
   id          Int     @id @default(autoincrement())
-  preferences String
+  preference_type PreferenceType @default(HOBBIES)
+  preference_name String
   profile     Profile @relation(fields: [profileId], references: [id])
   profileId   Int
 }
 
-model Profile {
+model PersonName {
   id     Int  @id @default(autoincrement())
-  user   User @relation(fields: [userId], references: [id])
-  userId Int  @unique
-
   salutation Salutation @default(MR)
   first_name String
   last_name  String
 
-  address   Address @relation(fields: [addressId], references: [id])
-  addressId Int
+  person Person[]
+}
 
-  date_of_birth  DateTime
+model Person {
+  id Int @id @default(autoincrement())
+
+  name PersonName @relation(fields: [nameId], references: [id])
+  nameId Int
+
+  ownProfile Profile? @relation("owner")
+  profileSpouse Profile? @relation("spouse")
+
+  date_of_birth  DateTime?
   gender         Gender   @default(Male)
   marital_status Boolean  @default(false)
+}
 
-  spouse_first_name String?
-  spouse_last_name  String?
+model Profile {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+  userId Int  @unique
+
+  person Person @relation(fields: [personId], references: [id], name: "owner")
+  personId Int @unique
+
+  spouse Person? @relation(fields: [spouseId], references: [id], name: "spouse")
+  spouseId Int @unique
+
+  address   Address @relation(fields: [addressId], references: [id])
+  addressId Int
 
   personal_preferences Preference[]
 }
