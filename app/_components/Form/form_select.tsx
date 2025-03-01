@@ -13,18 +13,16 @@ const FormSelect = ({
     options,
     className
 }: TFormSelectProps) => (
-    <div className={classNames("form-control", className)}>
-        <label className="label">
-            <span className="label-text">{ label }</span>
-        </label>
-        <select defaultValue={placeholder} className="select">
+    <fieldset className={classNames("fieldset flex", className)}>
+        <legend className="fieldset-legend">{ label }</legend>
+        <select defaultValue={placeholder} className="select flex-1">
             <option disabled={true}>{placeholder}</option>
 
             { options.map((option, index) => (
                 <option key={index}>{ option }</option>
             ))}
         </select>
-    </div>
+    </fieldset>
 )
 
 export default FormSelect

@@ -20,6 +20,7 @@ const handler = () => (
                         placeholder='First Name'
                         type="text"
                         required={true}
+                        className='flex-1'
                     />
 
                     <Form.Input
@@ -27,6 +28,7 @@ const handler = () => (
                         placeholder='Last Name'
                         type="text"
                         required={true}
+                        className='flex-1'
                     />
                 </div>
                 <Form.Input

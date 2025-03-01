@@ -15,17 +15,15 @@ const FormInput = ({
     type,
     className
 }: TFormInputProps) => (
-    <div className={classNames("form-control", className)}>
-        <label className="label">
-            <span className="label-text">{ label }</span>
-        </label>
+    <fieldset className={classNames("fieldset flex", className)}>
+        <legend className="fieldset-legend">{ label }</legend>
         <input
             type={type}
             placeholder={placeholder}
-            className="input input-bordered"
+            className="input input-border input-md flex-1"
             required={required}
         />
-    </div>
+    </fieldset>
 )
 
 export default FormInput

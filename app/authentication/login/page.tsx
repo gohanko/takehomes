@@ -23,7 +23,7 @@ const handler = () => (
 
                 <Form.Input
                     label={"Password"}
-                    placeholder={"password"}
+                    placeholder={"Password"}
                     type={"password"}
                     required={true}
                 />

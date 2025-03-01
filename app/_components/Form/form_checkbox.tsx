@@ -8,12 +8,13 @@ const FormCheckbox = ({
     label,
     defaultChecked
 }: TFormCheckboxProps) => (
-    <div className="form-control mt-3">
-        <label className="label cursor-pointer">
-            <span className="label-text">{ label }</span>
-            <input type="checkbox" defaultChecked={defaultChecked} className="checkbox" />
+    <fieldset className="fieldset mt-3 flex">
+        <label className="fieldset-label">
+            <input type="checkbox" defaultChecked={defaultChecked} className="checkbox checkbox-primary" />
+            { label }
         </label>
-    </div>
+
+    </fieldset>
 )
 
 export default FormCheckbox

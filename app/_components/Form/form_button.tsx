@@ -5,11 +5,11 @@ type TFormButtonProps = {
 const FormButton = ({
     label
 }: TFormButtonProps) => (
-    <div className="form-control mt-6 grow">
+    <fieldset className="fieldset mt-6 grow">
         <button className="btn btn-primary">
             { label }
         </button>
-    </div>
+    </fieldset>
 )
 
 export default FormButton
