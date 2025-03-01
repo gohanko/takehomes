@@ -37,12 +37,14 @@ model User {
 
 model Address {
   id       Int       @id @default(autoincrement())
+  profile Profile @relation(fields: [profileId], references: [id])
+  profileId Int @unique
+
   street_number   String
   street_name String
   postcode String
   city_town     String
   state    String
-  profile  Profile[]
 }
 
 model Preference {
@@ -53,42 +55,23 @@ model Preference {
   profileId   Int
 }
 
-model PersonName {
-  id     Int  @id @default(autoincrement())
-  salutation Salutation @default(MR)
-  first_name String
-  last_name  String
-
-  person Person[]
-}
-
-model Person {
-  id Int @id @default(autoincrement())
-
-  name PersonName @relation(fields: [nameId], references: [id])
-  nameId Int
-
-  ownProfile Profile? @relation("owner")
-  profileSpouse Profile? @relation("spouse")
-
-  date_of_birth  DateTime?
-  gender         Gender   @default(Male)
-  marital_status Boolean  @default(false)
-}
-
 model Profile {
   id Int @id @default(autoincrement())
   user User @relation(fields: [userId], references: [id])
   userId Int  @unique
 
-  person Person @relation(fields: [personId], references: [id], name: "owner")
-  personId Int @unique
+  salutation Salutation @default(MR)
+  first_name String
+  last_name  String
 
-  spouse Person? @relation(fields: [spouseId], references: [id], name: "spouse")
-  spouseId Int @unique
+  date_of_birth  DateTime?
+  gender         Gender   @default(Male)
+  marital_status Boolean  @default(false)
 
-  address   Address @relation(fields: [addressId], references: [id])
-  addressId Int
+  spouse_salutation Salutation? @default(MR)
+  spouse_first_name String?
+  spouse_last_name  String?
 
+  address Address?
   personal_preferences Preference[]
 }

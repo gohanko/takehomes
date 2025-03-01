@@ -16,6 +16,7 @@ const handler = () => (
             <Form action={handleLogin}>   
                 <Form.Input
                     label={"Email"}
+                    name={"email"}
                     placeholder={"Email"}
                     type={"email"}
                     required={true}
@@ -23,6 +24,7 @@ const handler = () => (
 
                 <Form.Input
                     label={"Password"}
+                    name="password"
                     placeholder={"Password"}
                     type={"password"}
                     required={true}

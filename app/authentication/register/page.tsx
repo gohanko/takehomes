@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { handleRegistration } from "./actions";
+
 import AuthCard from "../_components/AuthCard";
-import Form from "../../_components/Form";
+import RegisterForm from './_components/RegisterForm';
 
 const handler = () => (
     <AuthCard>
@@ -13,39 +13,8 @@ const handler = () => (
                     Already have an account? <Link className="link-primary" href="/authentication/login">Log in</Link>
                 </span>
             </AuthCard.Body.Header>
-            <Form action={handleRegistration}>
-                <div className='flex flex-row gap-5'>
-                    <Form.Input
-                        label='First Name'
-                        placeholder='First Name'
-                        type="text"
-                        required={true}
-                        className='flex-1'
-                    />
-
-                    <Form.Input
-                        label='Last Name'
-                        placeholder='Last Name'
-                        type="text"
-                        required={true}
-                        className='flex-1'
-                    />
-                </div>
-                <Form.Input
-                    label={"Email"}
-                    placeholder={"Email"}
-                    type={"email"}
-                    required={true}
-                />
-
-                <Form.Input
-                    label={"Password"}
-                    placeholder={"Password"}
-                    type={"password"}
-                    required={true}
-                />
-                <Form.Button label="Create account" />
-            </Form>
+            
+            <RegisterForm />
         </AuthCard.Body>
     </AuthCard>
 )
