@@ -79,5 +79,5 @@ export const register = async (state: FormState, formData: FormData) => {
     }
 
     const profile = await createProfile(user.id, first_name, last_name, date_of_birth)
-    redirect('/profile/login')
+    redirect('/authentication/login')
 }

@@ -1,5 +1,9 @@
 "use server"
 
-export const handleLogout = async (formData: FormData) => {
-    
+import { deleteSession } from "@/app/_lib/session"
+import { redirect } from "next/navigation"
+
+export async function logout() {
+    deleteSession()
+    redirect('/authentication/login')
 }
