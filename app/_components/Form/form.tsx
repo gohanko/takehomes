@@ -2,6 +2,8 @@ import FormButton from "./form_button";
 import FormInput from "./form_input";
 import FormCheckbox from "./form_checkbox";
 import FormSelect from "./form_select";
+import FormHorizontal from "./form_horizontal";
+import Divider from "../divider";
 
 interface TFormProps {
     children: React.ReactNode,
@@ -21,5 +23,7 @@ Form.Input = FormInput;
 Form.Button = FormButton
 Form.Checkbox = FormCheckbox;
 Form.Select = FormSelect;
+Form.Horizontal = FormHorizontal
+Form.Divider = Divider
 
 export default Form

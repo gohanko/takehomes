@@ -10,7 +10,7 @@ const RegisterForm = () => {
 
     return (
         <Form action={action}>
-            <div className='flex flex-row gap-5'>
+            <Form.Horizontal>
                 <Form.Input
                     name="first_name"
                     label='First Name'
@@ -30,7 +30,7 @@ const RegisterForm = () => {
                     className='flex-1'
                     validationHint={state?.errors?.last_name}
                 />
-            </div>
+            </Form.Horizontal>
 
             <Form.Input
                 name="date_of_birth"
@@ -40,7 +40,7 @@ const RegisterForm = () => {
                 validationHint={state?.errors?.date_of_birth}
             />
             
-            <div className='flex flex-row gap-5'>
+            <Form.Horizontal>
                 <Form.Input
                     name="email"
                     label={"Email"}
@@ -60,7 +60,7 @@ const RegisterForm = () => {
                     className='flex-1'
                     validationHint={state?.errors?.confirmation_email}
                 />
-            </div>
+            </Form.Horizontal>
 
             <Form.Input
                 name="password"
