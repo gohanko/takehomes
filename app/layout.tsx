@@ -22,7 +22,7 @@ const RootLayout = ({
     children
 }: TLayoutProps) => (
     <html lang="en" data-theme="dark">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}>
             {children}
         </body>
     </html>
