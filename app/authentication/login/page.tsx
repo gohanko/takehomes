@@ -1,43 +1,21 @@
 import Link from 'next/link'
-import { handleLogin } from "./actions";
 import Form from "../../_components/Form";
-import AuthCard from "../_components/AuthCard";
+import FormCard from "../../_components/FormCard";
+import LoginForm from './_components/LoginForm';
 
 const handler = () => (
-    <AuthCard>
-        <AuthCard.Body>
-            <AuthCard.Body.Header 
-                title={"Log in to your account"}
-            >
-                <span className="text-base-content">
-                    Not yet a member? <Link className="link-primary" href="/authentication/register">Register</Link>
-                </span>
-            </AuthCard.Body.Header>
-            <Form action={handleLogin}>   
-                <Form.Input
-                    label={"Email"}
-                    name={"email"}
-                    placeholder={"Email"}
-                    type={"email"}
-                    required={true}
-                />
+    <FormCard>
+        <FormCard.Header>
+            <FormCard.Header.Title>Log in to your account</FormCard.Header.Title>
 
-                <Form.Input
-                    label={"Password"}
-                    name="password"
-                    placeholder={"Password"}
-                    type={"password"}
-                    required={true}
-                />
-                <Form.Checkbox
-                    label='Remember me'
-                    defaultChecked={true}
-                />
-
-                <Form.Button label="Log In" />
-            </Form>
-        </AuthCard.Body>
-    </AuthCard>
+            <FormCard.Header.Subtitle>
+                Not yet a member? <Link className="link-primary" href="/authentication/register">Register</Link>
+            </FormCard.Header.Subtitle>               
+        </FormCard.Header>
+        <FormCard.Body>
+            <LoginForm />
+        </FormCard.Body>
+    </FormCard>
 )
 
 export default handler;

@@ -1,22 +1,20 @@
 import Link from 'next/link'
 
-import AuthCard from "../_components/AuthCard";
+import FormCard from "../../_components/FormCard";
 import RegisterForm from './_components/RegisterForm';
 
 const handler = () => (
-    <AuthCard>
-        <AuthCard.Body>
-            <AuthCard.Body.Header 
-                title={"Create an account"}
-            >
-                <span className="text-base-content">
-                    Already have an account? <Link className="link-primary" href="/authentication/login">Log in</Link>
-                </span>
-            </AuthCard.Body.Header>
-            
+    <FormCard>
+        <FormCard.Header>
+            <FormCard.Header.Title>Create an account</FormCard.Header.Title>
+            <FormCard.Header.Subtitle>
+                Already have an account? <Link className="link-primary" href="/authentication/login">Log in</Link>
+            </FormCard.Header.Subtitle>
+        </FormCard.Header>
+        <FormCard.Body>
             <RegisterForm />
-        </AuthCard.Body>
-    </AuthCard>
+        </FormCard.Body>
+    </FormCard>
 )
 
 export default handler;

@@ -1,4 +1,5 @@
 "use server"
+import { formatDateToISO } from '@/app/_utils/date'
 import { RegisterFormSchema, FormState } from '@/lib/definitions'
 import { prisma } from '@/lib/prisma'
 import bcrypt from 'bcrypt'
@@ -45,16 +46,21 @@ export const register = async (state: FormState, formData: FormData) => {
         }
     }
 
+    const formattedDateOfBirth = formatDateToISO(date_of_birth)
+
     const profile = await prisma.profile.create({
         data: {
             userId: user.id,
             first_name: first_name,
             last_name: last_name,
-            date_of_birth: date_of_birth,
+            date_of_birth: formattedDateOfBirth,
             spouse_first_name: '',
             spouse_last_name: '',
             addressId: 0,
         }
     })
 
+    return {
+        profile: profile
+    }
 }
