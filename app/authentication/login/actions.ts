@@ -17,8 +17,8 @@ const validateFormData = (formData: FormData) => {
 }
 
 const verifyPassword = async (password: string, stored_hashed_password: string) => {
-    const hashed_password = await bcrypt.hash(password, 10)
-    return hashed_password == stored_hashed_password;
+    const isVerified = await bcrypt.compare(password, stored_hashed_password)
+    return isVerified
 }
 
 const getUser = async (email: string) => {
@@ -44,7 +44,7 @@ export const login = async (state: FormState, formData: FormData) => {
 
     const user = await getUser(email)
     if (!user) {
-        return { message: "Email or password must be correct." }
+        return { message: "Email or password must be correct. !" }
     }
 
     const isPasswordVerified = await verifyPassword(password, user.hashed_password)
