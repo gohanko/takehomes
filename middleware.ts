@@ -43,12 +43,6 @@ export default async function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL('/profile/basic_details', req.nextUrl))
     }
 
-    // If logout then clear cookies, and redirect.
-    if (path.includes('/authentication/logout')) {
-        await deleteSession()
-        return NextResponse.redirect(new URL('/authentication/login', req.nextUrl))
-    }
-    
     return NextResponse.next()
 }
  
