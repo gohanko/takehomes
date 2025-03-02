@@ -8,7 +8,6 @@ type TCookieOption = {
     secure: boolean,
     expires?: number | Date,
     sameSite: 'lax',
-    path: '/'
 }
  
 export const createSession = async (userId: number, rememberMe: boolean) => {
@@ -19,7 +18,6 @@ export const createSession = async (userId: number, rememberMe: boolean) => {
         httpOnly: true,
         secure: true,
         sameSite: 'lax',
-        path: '/',
     }
 
     if (rememberMe) {
