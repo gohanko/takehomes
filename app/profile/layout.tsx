@@ -5,14 +5,13 @@ import Navbar from "./_components/navbar";
 import ProfileMenu from "./_components/ProfileMenu";
 import { usePathname } from "next/navigation";
 
-const ProfileLayout = ({
+const ProfileLayout = async ({
     children
 }: TLayoutProps) => {
     var urls = [
         {
             label: "Basic Details",
             link: "/profile/basic_details",
-            isActive: true
         },
         {
             label: "Additional Details",

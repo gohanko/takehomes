@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import { createUser } from '@/lib/database/user'
 import { createProfile } from '@/lib/database/profile'
 import { z } from 'zod'
+import { calculateAge } from '@/utility/date'
  
 const RegisterFormSchema = z.object({
     first_name: z
@@ -58,6 +59,15 @@ export const register = async (
             errors: { 
                 email: ["Email and confirmation email do not match."],
                 confirmation_email: ["Email and confirmation email do not match."]
+            }
+        }
+    }
+
+    const age = calculateAge(date_of_birth)
+    if (age < 17) {
+        return {
+            errors: {
+                date_of_birth: ["Must be at least 17 during registration!"]
             }
         }
     }

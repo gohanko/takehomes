@@ -4,6 +4,7 @@ import { useActionState } from 'react'
 import { register } from "../actions";
 import Form from "../../../../components/Form";
 import Alert from '@/components/alert';
+import { deductYearsFromDate } from '@/utility/date';
 
 
 const RegisterForm = () => {    
@@ -43,6 +44,7 @@ const RegisterForm = () => {
                     type={"date"}
                     required={true}
                     validationHint={state?.errors?.date_of_birth}
+                    max={deductYearsFromDate(new Date().toLocaleDateString(), 17)}
                 />
                 
                 <Form.Horizontal>

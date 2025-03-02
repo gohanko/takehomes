@@ -1,8 +1,9 @@
+"use server"
 
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import { decrypt } from './lib/session/token'
-import { deleteSession } from './lib/session/session'
+import { deleteSession, getSession } from './lib/session/session'
  
 const authorizedOnlyRoutes = [
     '/profile/basic_details',
@@ -25,9 +26,7 @@ export default async function middleware(req: NextRequest) {
     const isPublicRoute = publicRoutes.includes(path)
     
     // Decrypt the session from the cookie
-    const cookie = (await cookies()).get('session')?.value
-    const session = await decrypt(cookie)
-    
+const session = await getSession()    
     // Redirect to /login if the user is not authenticated
     const isProtectedRoute = authorizedOnlyRoutes.includes(path)
     if (isProtectedRoute && !session?.userId) {

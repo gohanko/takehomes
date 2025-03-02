@@ -1,11 +1,12 @@
 "use server"
 
 import { updateProfileByUserId } from "@/lib/database/profile"
-import { formatDateToISO } from "@/utility/date"
+import { calculateAge, formatDateToISO } from "@/utility/date"
 import { decrypt } from "@/lib/session/token"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { z } from "zod"
+import { getSession } from "@/lib/session/session"
 
 const AdditionalDetailFormSchema = z.object({
     date_of_birth: z
@@ -25,7 +26,10 @@ const AdditionalDetailFormSchema = z.object({
     state: z.string().trim()
 })
 
-export const editAdditionalDetails = async (formData: FormData) => {
+export const editAdditionalDetails = async (
+    form_state: ProfileFormState,
+    formData: FormData
+) => {
     const validatedFields = AdditionalDetailFormSchema.safeParse({
         date_of_birth: formData.get("date_of_birth"),
         gender: formData.get("gender"),
@@ -52,8 +56,15 @@ export const editAdditionalDetails = async (formData: FormData) => {
         state,
     } = validatedFields.data;
 
-    const cookie = (await cookies()).get('session')?.value
-    const session = await decrypt(cookie)
+const session = await getSession()
+    const age = calculateAge(date_of_birth)
+    if (age < 17) {
+        return {
+            errors: {
+                date_of_birth: ["Must be at least 17 during registration!"]
+            }
+        }
+    }
     
     const formattedDob = formatDateToISO(date_of_birth)
     const profile = await updateProfileByUserId(

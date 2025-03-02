@@ -1,44 +1,35 @@
 import classNames from "classnames"
 
-type TFormInputProps = {
+type TFormTextFieldProps = {
     label: string
     name: string
     placeholder?: string
-    type: "email" | "password" | "text" | "date"
     required?: boolean
     className?: string
     validationHint?: string[]
     defaultValue?: string
-    disabled?: boolean,
-    max?: string,
-    min?: string,
-
+    disabled?: boolean
 }
 
-const FormInput = ({
+const FormTextField = ({
     label,
     name,
     placeholder,
     required,
-    type,
     className,
     validationHint,
     defaultValue,
     disabled,
-    max,
-    min,
-}: TFormInputProps) => (
-    <fieldset className={classNames("fieldset", className)} disabled={disabled}>
+}: TFormTextFieldProps) => (
+    <fieldset className={classNames("fieldset", className)}>
         <legend className="fieldset-legend">{ label }</legend>
-        <input
-            type={type}
-            name={name}
+        <textarea
+            className="textarea h-54 w-full"
             placeholder={placeholder}
-            className={classNames("input input-border validator input-md w-full", { "input-error": validationHint })}
+            name={name}
             required={required}
+            disabled={disabled}
             defaultValue={defaultValue}
-            max={max}
-            min={min}
         />
         { validationHint?.map((hint, index) => (
             <div key={index} className="text-error">{hint}</div>
@@ -46,4 +37,4 @@ const FormInput = ({
     </fieldset>
 )
 
-export default FormInput
+export default FormTextField

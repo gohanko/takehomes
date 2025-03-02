@@ -1,3 +1,57 @@
 "use server"
 
-export const editPersonalPreferences = async (formData: FormData) => {}
+import { updateProfileByUserId } from "@/lib/database/profile"
+import { getSession } from "@/lib/session/session"
+import { decrypt } from "@/lib/session/token"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
+import { z } from "zod"
+
+
+const PersonalPreferencesFormSchema = z.object({
+    interests: z.string().trim(),
+    sports: z.string().trim(),
+    music: z.string().trim(),
+    movie_tv: z.string().trim(),
+})
+
+export const editPersonalPreferences = async (
+    form_state: ProfileFormState,
+    formData: FormData
+) => {
+    const validatedFields = PersonalPreferencesFormSchema.safeParse({
+        interests: formData.get("interests"),
+        sports: formData.get("sports"),
+        music: formData.get("music"),
+        movie_tv: formData.get("movie_tv")
+    })
+
+    if (!validatedFields.success) {
+        return { errors: validatedFields.error.flatten().fieldErrors }
+    }
+
+    const {
+        interests,
+        sports,
+        music,
+        movie_tv,
+    } = validatedFields.data;
+
+    const session = await getSession()
+
+    const profile = await updateProfileByUserId(
+        Number(session?.userId),
+        {
+            interests,
+            sports,
+            music,
+            movie_tv
+        }
+    )
+
+    if (!profile) {
+        return { message: "Something wrong!" }
+    }
+
+    redirect('/profile/personal_preferences')
+}

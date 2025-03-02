@@ -2,6 +2,7 @@
 
 import { updateProfileByUserId } from "@/lib/database/profile"
 import { updateUserByUserId } from "@/lib/database/user"
+import { getSession } from "@/lib/session/session"
 import { decrypt } from "@/lib/session/token"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
@@ -20,7 +21,10 @@ const BasicDetailFormSchema = z.object({
     email: z.string().email({ message: 'Please enter a valid email.' }).trim(),
 })
 
-export const editBasicDetails = async (formData: FormData) => {
+export const editBasicDetails = async (
+    form_state: ProfileFormState,
+    formData: FormData
+) => {
     const validatedFields = BasicDetailFormSchema.safeParse({
         salutations: formData.get("salutations"),
         first_name: formData.get("first_name"),
@@ -39,9 +43,7 @@ export const editBasicDetails = async (formData: FormData) => {
         email,
     } = validatedFields.data;
 
-    const cookie = (await cookies()).get('session')?.value
-    const session = await decrypt(cookie)
-
+const session = await getSession()
     const user = await updateUserByUserId(Number(session?.userId), { email: email })
     if (!user) {
         return { message: "User Update went wrong!"}

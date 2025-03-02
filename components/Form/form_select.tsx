@@ -7,7 +7,9 @@ type TFormSelectProps = {
     options: string[],
     className?: string
     defaultValue?: string,
-    disabled?: boolean
+    disabled?: boolean,
+    required?: boolean
+    validationHint?: string[]
 }
 
 const FormSelect = ({
@@ -17,17 +19,22 @@ const FormSelect = ({
     options,
     className,
     defaultValue,
-    disabled
+    disabled,
+    required,
+    validationHint
 }: TFormSelectProps) => (
-    <fieldset className={classNames("fieldset flex", className)} disabled={disabled}>
+    <fieldset className={classNames("fieldset flex flex-col", className)} disabled={disabled}>
         <legend className="fieldset-legend">{ label }</legend>
-        <select name={name} defaultValue={defaultValue || placeholder} className="select flex-1">
+        <select name={name} defaultValue={defaultValue || placeholder} required={required} className="select flex-1">
             <option disabled={true}>{placeholder}</option>
 
             { options.map((option, index) => (
                 <option key={index}>{ option }</option>
             ))}
         </select>
+        { validationHint?.map((hint, index) => (
+            <div key={index} className="text-error">{hint}</div>
+        ))}
     </fieldset>
 )
 

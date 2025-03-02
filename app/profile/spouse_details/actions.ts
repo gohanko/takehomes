@@ -1,6 +1,7 @@
 "use server"
 
 import { updateProfileByUserId } from "@/lib/database/profile"
+import { getSession } from "@/lib/session/session"
 import { decrypt } from "@/lib/session/token"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
@@ -18,7 +19,10 @@ const SpouseDetailsFormSchema = z.object({
         .trim(),
 })
 
-export const editSpouseDetails = async (formData: FormData) => {
+export const editSpouseDetails = async (
+    form_state: ProfileFormState,
+    formData: FormData
+) => {
     const validatedFields = SpouseDetailsFormSchema.safeParse({
         spouse_salutation: formData.get("spouse_salutation"),
         spouse_first_name: formData.get("spouse_first_name"),
@@ -35,9 +39,7 @@ export const editSpouseDetails = async (formData: FormData) => {
         spouse_last_name,
     } = validatedFields.data;
 
-    const cookie = (await cookies()).get('session')?.value
-    const session = await decrypt(cookie)
-
+const session = await getSession()
     const profile = await updateProfileByUserId(
         Number(session?.userId),
         {

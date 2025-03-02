@@ -7,7 +7,14 @@ import BasicDetailsForm from "./_components/BasicDetailsForm";
 const handler = async () =>  {
     const { user, profile } = await getUserAndProfileData()
 
-    return <BasicDetailsForm user={user} profile={profile} />
+    return (
+        <>
+            <div className="flex flex-row justify-between items-center">
+                <h1 className="text-2xl font-bold">Basic Details</h1>
+            </div>
+            <BasicDetailsForm user={user} profile={profile} />
+        </>
+    )
 }
 
 export default handler;

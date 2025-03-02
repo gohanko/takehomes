@@ -39,14 +39,14 @@ model Profile {
   user    User @relation(fields: [user_id], references: [id])
   user_id Int  @unique
 
-  salutations   Salutation @default(Mr)
+  salutations   Salutation?
   first_name    String
   last_name     String
   date_of_birth DateTime?
-  gender        Gender     @default(Male)
+  gender        Gender?
 
-  marital_status    MaritalStatus @default(Single)
-  spouse_salutation Salutation    @default(Mrs)
+  marital_status    MaritalStatus?
+  spouse_salutation Salutation?
   spouse_first_name String?
   spouse_last_name  String?
 
@@ -54,5 +54,10 @@ model Profile {
   street_name   String?
   postcode      String?
   city_town     String?
-  state         String?
+  state         String? @default("State")
+
+  interests String?
+  sports    String?
+  music     String?
+  movie_tv  String?
 }

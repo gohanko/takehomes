@@ -2,6 +2,7 @@
 
 import { getProfileByUserId } from '@/lib/database/profile'
 import { getUserById } from '@/lib/database/user'
+import { getSession } from '@/lib/session/session'
 import { decrypt } from '@/lib/session/token'
 import { Profile, User } from '@prisma/client'
 import { cookies } from 'next/headers'
@@ -12,9 +13,7 @@ export type TUserAndProfile = {
 }
 
 export const getUserAndProfileData = async (): Promise<TUserAndProfile> => {
-    const cookie = (await cookies()).get('session')?.value
-    const session = await decrypt(cookie)
-
+const session = await getSession()
     const emptyUser: User = {
         id: 0,
         email: '',
@@ -37,7 +36,11 @@ export const getUserAndProfileData = async (): Promise<TUserAndProfile> => {
         street_name: null,
         postcode: null,
         city_town: null,
-        state: null
+        state: null,
+        interests: null,
+        sports: null,
+        music: null,
+        movie_tv: null
     }
 
     const userId = Number(session?.userId)

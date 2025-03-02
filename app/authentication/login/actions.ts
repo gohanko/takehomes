@@ -35,12 +35,12 @@ export const login = async (
 
     const user = await getUserByEmail(email)
     if (!user) {
-        return { message: "Email or password must be correct." }
+        return { message: "Your passwords do not match." }
     }
 
     const isPasswordVerified = await verifyPassword(password, user.hashed_password)
     if (!isPasswordVerified) {
-        return { message: "Email or password must be correct."}
+        return { message: "Your passwords do not match."}
     }
 
     await createSession(user.id)

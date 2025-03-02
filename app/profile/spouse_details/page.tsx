@@ -6,7 +6,12 @@ const handler = async () =>  {
     const { user, profile } = await getUserAndProfileData()
 
     return (
-        <SpouseDetailsForm user={user} profile={profile} />
+        <>
+            <div className="flex flex-row justify-between items-center">
+                <h1 className="text-2xl font-bold">Spouse Details</h1>
+            </div>
+            <SpouseDetailsForm user={user} profile={profile} />
+        </>
     )
 }
 
