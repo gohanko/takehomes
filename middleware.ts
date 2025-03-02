@@ -1,7 +1,7 @@
 "use server"
 
 import { NextRequest, NextResponse } from 'next/server'
-import { deleteSession, getSession } from './lib/session/session'
+import { deleteSession, getSession } from './services/session/session'
  
 const authorizedOnlyRoutes = [
     '/profile/basic_details',
