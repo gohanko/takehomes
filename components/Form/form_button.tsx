@@ -1,12 +1,33 @@
+"use client"
+import classNames from "classnames"
+
 type TFormButtonProps = {
-    label: string
+    label: string,
+    type: "submit" | "reset"
+    color: "neutral" | "primary" | "error" | "success"
+    onClick?: () => void
 }
 
 const FormButton = ({
-    label
+    label,
+    type,
+    color,
+    onClick
 }: TFormButtonProps) => (
     <fieldset className="fieldset mt-6 grow">
-        <button className="btn btn-primary">
+        <button 
+            className={classNames(
+                "btn", 
+                {
+                    'btn-neutral': color == 'neutral',
+                    'btn-primary': color == 'primary',
+                    'btn-error': color == 'error',
+                    'btn-success': color == 'success',
+                }
+            )}
+            type={type}
+            onClick={onClick}
+        >
             { label }
         </button>
     </fieldset>

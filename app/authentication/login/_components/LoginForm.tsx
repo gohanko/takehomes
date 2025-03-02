@@ -37,7 +37,7 @@ const LoginForm = () => {
                     defaultChecked={true}
                 />
 
-                <Form.Button label="Log In" />
+                <Form.Button label="Log In" type="submit" color="primary" />
             </Form>
         </>
     )

@@ -32,7 +32,7 @@ export const login = async (state: LoginFormState, formData: FormData) => {
 
     const user = await getUserByEmail(email)
     if (!user) {
-        return { message: "Email or password must be correct. !" }
+        return { message: "Email or password must be correct." }
     }
 
     const isPasswordVerified = await verifyPassword(password, user.hashed_password)

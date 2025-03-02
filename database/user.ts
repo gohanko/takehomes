@@ -18,24 +18,7 @@ export const getUserById = async (id: number) => {
         }
     })
 
-    if (!user) {
-        return {}
-    }
-
-    const profile = prisma.profile.findUnique({
-        where: {
-            userId: user.id
-        }
-    })
-
-    if (!profile) {
-        return {}
-    }
-
-    return {
-        user,
-        profile
-    }
+    return user
 }
 
 export const createUser = async (email: string, password: string) => {
@@ -49,4 +32,17 @@ export const createUser = async (email: string, password: string) => {
     })
 
     return user
+}
+
+export const updateUserByUserId = async (userId: number, args: any) => {
+    const profile = await prisma.user.update({
+        where: {
+            id: userId
+        },
+        data: {
+            ...args
+        },
+    })
+
+    return profile
 }

@@ -75,7 +75,7 @@ const RegisterForm = () => {
                     required={true}
                     validationHint={state?.errors?.password}
                 />
-                <Form.Button label="Create account" />
+                <Form.Button label="Create account"  type="submit" color="primary" />
             </Form>
         </>
     )

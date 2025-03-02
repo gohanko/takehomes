@@ -9,6 +9,8 @@ type TFormInputProps = {
     required: boolean
     className?: string
     validationHint?: string[]
+    defaultValue?: string
+    disabled?: boolean
 }
 
 const FormInput = ({
@@ -18,9 +20,11 @@ const FormInput = ({
     required,
     type,
     className,
-    validationHint
+    validationHint,
+    defaultValue,
+    disabled
 }: TFormInputProps) => (
-    <fieldset className={classNames("fieldset", className)}>
+    <fieldset className={classNames("fieldset", className)} disabled={disabled}>
         <legend className="fieldset-legend">{ label }</legend>
         <input
             type={type}
@@ -28,6 +32,7 @@ const FormInput = ({
             placeholder={placeholder}
             className={classNames("input input-border validator input-md w-full", { "input-error": validationHint })}
             required={required}
+            defaultValue={defaultValue}
         />
         { validationHint?.map((hint, index) => (
             <div key={index} className="text-error">{hint}</div>

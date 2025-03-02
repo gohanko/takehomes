@@ -5,13 +5,36 @@ export const createProfile = async (userId: number, first_name: string, last_nam
     const formattedDateOfBirth = formatDateToISO(date_of_birth)
     const profile = await prisma.profile.create({
         data: {
-            userId: userId,
+            user_id: userId,
             first_name: first_name,
             last_name: last_name,
             date_of_birth: formattedDateOfBirth,
             spouse_first_name: '',
             spouse_last_name: '',
         }
+    })
+
+    return profile
+}
+
+export const getProfileByUserId = async (userId: number) => {
+    const profile = await prisma.profile.findUnique({
+        where: {
+            user_id: userId
+        }
+    })
+
+    return profile
+}
+
+export const updateProfileByUserId = async (userId: number, args: any) => {
+    const profile = await prisma.profile.update({
+        where: {
+            user_id: userId
+        },
+        data: {
+            ...args
+        },
     })
 
     return profile

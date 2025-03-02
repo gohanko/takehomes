@@ -1,38 +1,51 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
-import { decrypt } from './utility/session'
+import { decrypt, deleteSession } from './utility/session'
  
-// 1. Specify protected and public routes
+// Specify protected and public routes
 const protectedRoutes = [
     '/profile/basic_details',
     '/profile/additional_details',
     '/profile/spouse_details',
     '/profile/personal_preferences',
-    '/authorisation/logout'
+    '/authentication/logout'
 ]
 
-const publicRoutes = [
-    '/authorisation/login',
-    '/authorisation/register',
+const publicAuthRoutes = [
+    '/authentication/login',
+    '/authentication/register',
 ]
+
+const publicRoutes = publicAuthRoutes
  
 export default async function middleware(req: NextRequest) {
-    // 2. Check if the current route is protected or public
+    // Check if the current route is protected or public
     const path = req.nextUrl.pathname
     const isProtectedRoute = protectedRoutes.includes(path)
     const isPublicRoute = publicRoutes.includes(path)
     
-    // 3. Decrypt the session from the cookie
+    // Decrypt the session from the cookie
     const cookie = (await cookies()).get('session')?.value
     const session = await decrypt(cookie)
-    
-    // 4. Redirect to /login if the user is not authenticated
+
+    // Redirect to /login if the user is not authenticated
     if (isProtectedRoute && !session?.userId) {
         return NextResponse.redirect(new URL('/authentication/login', req.nextUrl))
     }
-    
-    // 5. Redirect to /dashboard if the user is authenticated
+
+    // If Logout then clear cookies, and redirect.
+    if (path.includes('/authentication/logout') && session?.userId) {
+        await deleteSession()
+        return NextResponse.redirect(new URL('/authentication/login', req.nextUrl))
+    }
+
+    // If on public auth routes but is authenticated redirect to basic details page.
+    if (publicAuthRoutes.includes(path) && session?.userId) {
+        return NextResponse.redirect(new URL('/profile/basic_details', req.nextUrl))
+    }
+
+    // Redirect to /dashboard if the user is authenticated
     if (
         isPublicRoute &&
         session?.userId &&

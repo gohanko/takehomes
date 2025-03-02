@@ -1,6 +1,23 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+enum Gender {
+  Male
+  Female
+}
+
+enum Salutation {
+  Mr
+  Mrs
+  Ms
+}
+
+enum MaritalStatus {
+  Single
+  Married
+  Divorced
+}
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,24 +27,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Salutation {
-  MR
-  MRS
-  MS
-}
-
-enum Gender {
-  Male
-  Female
-}
-
-enum PreferenceType {
-  HOBBIES
-  MUSIC
-  MOVIETVSHOW
-  SPORTS
-}
-
 model User {
   id              Int      @id @default(autoincrement())
   email           String   @unique
@@ -35,43 +34,25 @@ model User {
   profile         Profile?
 }
 
-model Address {
-  id       Int       @id @default(autoincrement())
-  profile Profile? @relation(fields: [profileId], references: [id])
-  profileId Int? @unique
-
-  street_number   String
-  street_name String
-  postcode String
-  city_town     String
-  state    String
-}
-
-model Preference {
-  id          Int     @id @default(autoincrement())
-  preference_type PreferenceType @default(HOBBIES)
-  preference_name String
-  profile     Profile @relation(fields: [profileId], references: [id])
-  profileId   Int
-}
-
 model Profile {
-  id Int @id @default(autoincrement())
-  user User @relation(fields: [userId], references: [id])
-  userId Int  @unique
+  id      Int  @id @default(autoincrement())
+  user    User @relation(fields: [user_id], references: [id])
+  user_id Int  @unique
 
-  salutation Salutation @default(MR)
-  first_name String
-  last_name  String
+  salutations   Salutation @default(Mr)
+  first_name    String
+  last_name     String
+  date_of_birth DateTime?
+  gender        Gender     @default(Male)
 
-  date_of_birth  DateTime?
-  gender         Gender   @default(Male)
-  marital_status Boolean  @default(false)
-
-  spouse_salutation Salutation? @default(MR)
+  marital_status    MaritalStatus @default(Single)
+  spouse_salutation Salutation    @default(Mrs)
   spouse_first_name String?
   spouse_last_name  String?
 
-  address Address?
-  personal_preferences Preference[]
+  street_number String?
+  street_name   String?
+  postcode      String?
+  city_town     String?
+  state         String?
 }
