@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const Navbar = () => (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-200">
         <div className="navbar-start">
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -35,8 +35,6 @@ const Navbar = () => (
                     </li>
                 </ul>
             </div>
-        </div>
-        <div className="navbar-center">
             <a className="btn btn-ghost text-xl">Convertium TakeHome Application</a>
         </div>
     </div>
