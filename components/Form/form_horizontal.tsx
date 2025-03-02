@@ -10,7 +10,7 @@ const FormHorizontal = ({
     children,
     className,
 }: TFormHorizontalProps) => (
-    <div className={classNames('flex flex-row gap-5', className)}>
+    <div className={classNames('flex flex-col lg:flex-row lg:gap-2', className)}>
         { children }
     </div>
 )

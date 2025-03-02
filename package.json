@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
     "postinstall": "prisma generate",
-    "build": "prisma migrate deploy && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:format": "prisma format",
+    "dev": "next dev --turbopack",
+    "db:migrate": "prisma migrate dev",
+    "db:format": "prisma format",
     "test": "jest",
     "test:watch": "jest --watch"
   },

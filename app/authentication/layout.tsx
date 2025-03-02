@@ -5,7 +5,7 @@ import authBg from "../../public/auth_bg.jpg";
 const AuthenticationLayout = ({
     children
 }: TLayoutProps) => (
-    <div className="flex flex-col-reverse lg:flex-row gap-5 h-screen p-5">        
+    <div className="flex flex-col-reverse lg:flex-row gap-5 h-screen pt-2 px-2 lg:p-5 overflow-scroll">        
         <BackgroundImage 
             image={
                 <Image

@@ -8,8 +8,8 @@ type TFormCardProps = {
 const FormCard = ({
     children
 }: TFormCardProps) => (
-    <div className="card bg-base-300 h-full p-12 rounded-3xl shadow-2xl overflow-auto">
-        <div className="card-body gap-10">
+    <div className="card bg-base-300 h-full p-5 lg:p-12 rounded-3xl shadow-2xl overflow-auto">
+        <div className="card-body gap-5 lg:gap-10">
             { children }
         </div>
     </div>
