@@ -1,4 +1,4 @@
-import { prisma } from '@/app/_lib/_database/prisma'
+import { prisma } from '@/database/prisma'
 
 const getUserAndProfileData = () => {
     

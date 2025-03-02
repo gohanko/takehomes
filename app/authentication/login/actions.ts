@@ -2,9 +2,9 @@
 
 import { z } from 'zod'
 import { redirect } from "next/navigation"
-import { createSession } from "@/app/_utility/session"
-import { getUserByEmail } from "@/app/_lib/_database/user"
-import { verifyPassword } from "@/app/_utility/password"
+import { createSession } from "@/utility/session"
+import { getUserByEmail } from "@/database/user"
+import { verifyPassword } from "@/utility/password"
 
 const LoginFormSchema = z.object({
     email: z.string().email({ message: 'Please enter a valid email.' }).trim(),
@@ -42,5 +42,5 @@ export const login = async (state: LoginFormState, formData: FormData) => {
 
     await createSession(user.id)
 
-    redirect('/profile/')
+    redirect('/profile/basic_details')
 }

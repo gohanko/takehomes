@@ -2,8 +2,8 @@
 
 import { useActionState } from 'react'
 import { register } from "../actions";
-import Form from "../../../_components/Form";
-import Alert from '@/app/_components/alert';
+import Form from "../../../../components/Form";
+import Alert from '@/components/alert';
 
 
 const RegisterForm = () => {    

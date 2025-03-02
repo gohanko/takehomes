@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 const Navbar = () => (
     <div className="navbar bg-base-100">
         <div className="navbar-start">
@@ -19,10 +21,18 @@ const Navbar = () => (
                 <ul
                     tabIndex={0}
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow-sm">
-                    <li><a>Home</a></li>
-                    <li><a>My Profile</a></li>
-                    <li><a>Edit Profile</a></li>
-                    <li><a>Log Out</a></li>
+                    <li>
+                        <Link href="/profile/basic_details">Home</Link>
+                    </li>
+                    <li>
+                        <Link href="/profile/basic_details">My Profile</Link>
+                    </li>
+                    <li>
+                        <Link href="/profile/basic_details">Edit Profile</Link>
+                    </li>
+                    <li>
+                        <Link href="/authentication/logout">Log Out</Link>
+                    </li>
                 </ul>
             </div>
         </div>

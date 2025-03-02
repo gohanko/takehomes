@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BackgroundImage from "../_components/background-image";
+import BackgroundImage from "../../components/background-image";
 import authBg from "../../public/auth_bg.jpg";
 
 const AuthenticationLayout = ({

@@ -1,8 +1,8 @@
 "use server"
 
 import { redirect } from 'next/navigation'
-import { createUser } from '@/app/_lib/_database/user'
-import { createProfile } from '@/app/_lib/_database/profile'
+import { createUser } from '@/database/user'
+import { createProfile } from '@/database/profile'
 import { z } from 'zod'
  
 const RegisterFormSchema = z.object({

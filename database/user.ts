@@ -1,5 +1,5 @@
-import { prisma } from '@/app/_lib/_database/prisma'
-import { hashPassword } from '../../_utility/password'
+import { prisma } from '@/database/prisma'
+import { hashPassword } from '../utility/password'
 
 export const getUserByEmail = async (email: string) => {
     const user = await prisma.user.findUnique({

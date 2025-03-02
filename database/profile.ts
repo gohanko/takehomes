@@ -1,4 +1,4 @@
-import { formatDateToISO } from "@/app/_utility/date"
+import { formatDateToISO } from "@/utility/date"
 import { prisma } from "./prisma"
 
 export const createProfile = async (userId: number, first_name: string, last_name: string, date_of_birth: string) => {

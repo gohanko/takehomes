@@ -1,7 +1,7 @@
-import Form from "@/app/_components/Form";
+import Form from "@/components/Form";
 import { editAdditionalDetails } from "./actions";
-import { GENDER } from "@/app/_constants/gender";
-import { MARITAL_STATUS } from "@/app/_constants/marital_status";
+import { GENDER } from "@/constants/gender";
+import { MARITAL_STATUS } from "@/constants/marital_status";
 
 const handler = () =>  (
     <Form action={editAdditionalDetails}>

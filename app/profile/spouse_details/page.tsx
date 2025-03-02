@@ -1,4 +1,4 @@
-import Form from "@/app/_components/Form";
+import Form from "@/components/Form";
 import { editSpouseDetails } from "./actions";
 
 
