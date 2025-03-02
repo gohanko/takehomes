@@ -14,6 +14,7 @@ const LoginFormSchema = z.object({
         .regex(/[a-zA-Z]/, { message: 'Contain at least one letter.' })
         .regex(/[0-9]/, { message: 'Contain at least one number.' })
         .trim(),
+    remember_me: z.boolean()
 })
 
 export const login = async (
@@ -22,17 +23,19 @@ export const login = async (
 ) => {
     const validatedFields = LoginFormSchema.safeParse({
         email: formData.get("email"),
-        password: formData.get("password")
+        password: formData.get("password"),
+        remember_me: formData.get('remember_me') == "on"
     })
+    console.log(validatedFields.error?.flatten().fieldErrors)
     if (!validatedFields.success) {
         return { errors: validatedFields.error.flatten().fieldErrors }
     }
-
+    
     const {
         email,
-        password
+        password,
+        remember_me
     } = validatedFields.data;
-
     const user = await getUserByEmail(email)
     if (!user) {
         return { message: "Your passwords do not match." }
@@ -43,7 +46,7 @@ export const login = async (
         return { message: "Your passwords do not match."}
     }
 
-    await createSession(user.id)
+    await createSession(user.id, remember_me)
 
     redirect('/profile/basic_details')
 }

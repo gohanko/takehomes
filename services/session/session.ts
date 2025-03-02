@@ -2,19 +2,32 @@ import 'server-only'
 
 import { cookies } from 'next/headers'
 import { decrypt, encrypt } from './token'
+
+type TCookieOption = {
+    httpOnly: boolean,
+    secure: boolean,
+    expires?: number | Date,
+    sameSite: 'lax',
+    path: '/'
+}
  
-export const createSession = async (userId: number) => {
+export const createSession = async (userId: number, rememberMe: boolean) => {
     const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-    const session = await encrypt({ userId, expiresAt })
-    const cookieStore = await cookies()
+    const session = await encrypt({ userId, expiresAt })    
     
-    cookieStore.set('session', session, {
+    const cookieOptions: TCookieOption = {
         httpOnly: true,
         secure: true,
-        expires: expiresAt,
         sameSite: 'lax',
         path: '/',
-    })
+    }
+
+    if (rememberMe) {
+        cookieOptions.expires = expiresAt
+    }
+
+    const cookieStore = await cookies()
+    cookieStore.set('session', session, cookieOptions)
 }
 
 export const getSession = async () => {

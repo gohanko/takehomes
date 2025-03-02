@@ -34,6 +34,7 @@ const LoginForm = () => {
                 />
                 <Form.Checkbox
                     label='Remember me'
+                    name="remember_me"
                     defaultChecked={true}
                 />
 
