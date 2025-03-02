@@ -1,13 +1,11 @@
 "use server"
 
-import { updateProfileByUserId } from "@/database/profile"
-import { updateUserByUserId } from "@/database/user"
+import { updateProfileByUserId } from "@/lib/database/profile"
 import { formatDateToISO } from "@/utility/date"
-import { decrypt } from "@/utility/session"
+import { decrypt } from "@/lib/session/token"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { date, z } from "zod"
-
+import { z } from "zod"
 
 const AdditionalDetailFormSchema = z.object({
     date_of_birth: z

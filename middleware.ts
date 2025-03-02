@@ -1,10 +1,10 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
-import { decrypt, deleteSession } from './utility/session'
+import { decrypt } from './lib/session/token'
+import { deleteSession } from './lib/session/session'
  
-// Specify protected and public routes
-const protectedRoutes = [
+const authorizedOnlyRoutes = [
     '/profile/basic_details',
     '/profile/additional_details',
     '/profile/spouse_details',
@@ -12,52 +12,49 @@ const protectedRoutes = [
     '/authentication/logout'
 ]
 
-const publicAuthRoutes = [
+const anonymousOnlyRoutes = [
     '/authentication/login',
     '/authentication/register',
 ]
 
-const publicRoutes = publicAuthRoutes
+const publicRoutes = anonymousOnlyRoutes
  
 export default async function middleware(req: NextRequest) {
     // Check if the current route is protected or public
     const path = req.nextUrl.pathname
-    const isProtectedRoute = protectedRoutes.includes(path)
     const isPublicRoute = publicRoutes.includes(path)
     
     // Decrypt the session from the cookie
     const cookie = (await cookies()).get('session')?.value
     const session = await decrypt(cookie)
-
+    
     // Redirect to /login if the user is not authenticated
+    const isProtectedRoute = authorizedOnlyRoutes.includes(path)
     if (isProtectedRoute && !session?.userId) {
         return NextResponse.redirect(new URL('/authentication/login', req.nextUrl))
     }
+    
+    // If on anonymous only routes but is authenticated redirect to basic details page.
+    const isAnonymousOnlyRoute = anonymousOnlyRoutes.includes(path)
+    if (isAnonymousOnlyRoute && session?.userId) {
+        return NextResponse.redirect(new URL('/profile/basic_details', req.nextUrl))
+    }
 
-    // If Logout then clear cookies, and redirect.
+    // If user is authenticated, redirect to basic details route
+    if (isPublicRoute && session?.userId && !req.nextUrl.pathname.startsWith('/profile/basic_details')) {
+        return NextResponse.redirect(new URL('/profile/basic_details', req.nextUrl))
+    }
+
+    // If logout then clear cookies, and redirect.
     if (path.includes('/authentication/logout') && session?.userId) {
         await deleteSession()
         return NextResponse.redirect(new URL('/authentication/login', req.nextUrl))
-    }
-
-    // If on public auth routes but is authenticated redirect to basic details page.
-    if (publicAuthRoutes.includes(path) && session?.userId) {
-        return NextResponse.redirect(new URL('/profile/basic_details', req.nextUrl))
-    }
-
-    // Redirect to /dashboard if the user is authenticated
-    if (
-        isPublicRoute &&
-        session?.userId &&
-        !req.nextUrl.pathname.startsWith('/profile/basic_details')
-    ) {
-        return NextResponse.redirect(new URL('/profile/basic_details', req.nextUrl))
     }
     
     return NextResponse.next()
 }
  
-// Routes Middleware should not run on
+// Routes that the middleware should not run on
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
 }

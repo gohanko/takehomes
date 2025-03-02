@@ -1,4 +1,3 @@
-
 export const SALUTATIONS = [
     "Mr",
     "Mrs",

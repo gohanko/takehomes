@@ -1,8 +1,8 @@
 "use server"
 
-import { getProfileByUserId } from '@/database/profile'
-import { getUserById } from '@/database/user'
-import { decrypt } from '@/utility/session'
+import { getProfileByUserId } from '@/lib/database/profile'
+import { getUserById } from '@/lib/database/user'
+import { decrypt } from '@/lib/session/token'
 import { Profile, User } from '@prisma/client'
 import { cookies } from 'next/headers'
 

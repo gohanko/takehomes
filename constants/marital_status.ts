@@ -1,4 +1,5 @@
 export const MARITAL_STATUS = [
     "Single",
-    "Married"
+    "Married",
+    "Divorced"
 ]

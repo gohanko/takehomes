@@ -1,8 +1,7 @@
 "use server"
 
-import { updateProfileByUserId } from "@/database/profile"
-import { updateUserByUserId } from "@/database/user"
-import { decrypt } from "@/utility/session"
+import { updateProfileByUserId } from "@/lib/database/profile"
+import { decrypt } from "@/lib/session/token"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { z } from "zod"

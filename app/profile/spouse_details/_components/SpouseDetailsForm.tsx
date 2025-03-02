@@ -4,7 +4,7 @@ import Form from "@/components/Form"
 import { editSpouseDetails } from "../actions"
 import { SALUTATIONS } from "@/constants/salutations"
 import { useState } from "react"
-import { getUserAndProfileData, TUserAndProfile } from "../../actions"
+import { TUserAndProfile } from "../../actions"
 
 const SpouseDetailsForm = ({
     user,

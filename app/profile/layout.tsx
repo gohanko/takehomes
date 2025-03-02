@@ -34,7 +34,7 @@ const ProfileLayout = ({
         <>
             <Navbar />
     
-            <main className="flex-1 flex flex-row mx-5 mb-5 gap-5">
+            <main className="flex-1 flex flex-col lg:flex-row mx-5 mb-5 gap-5">
                 <div className="flex-1 flex flex-col gap-5">
                     <ProfileMenu>
                         { urls.map((url, index) => (
@@ -47,7 +47,7 @@ const ProfileLayout = ({
                         ))}
                     </ProfileMenu>
     
-                    <Link className="btn btn-soft" href="/authentication/logout">Logout</Link>
+                    <Link className="hidden lg:flex btn btn-soft" href="/authentication/logout">Logout</Link>
                 </div>
     
                 <div className="flex-4 flex flex-col gap-5 bg-base-200 rounded-box p-5">    

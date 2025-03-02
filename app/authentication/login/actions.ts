@@ -2,8 +2,8 @@
 
 import { z } from 'zod'
 import { redirect } from "next/navigation"
-import { createSession } from "@/utility/session"
-import { getUserByEmail } from "@/database/user"
+import { createSession } from "@/lib/session/session"
+import { getUserByEmail } from "@/lib/database/user"
 import { verifyPassword } from "@/utility/password"
 
 const LoginFormSchema = z.object({
@@ -16,7 +16,10 @@ const LoginFormSchema = z.object({
         .trim(),
 })
 
-export const login = async (state: LoginFormState, formData: FormData) => {
+export const login = async (
+    state: AuthenticationFormState,
+    formData: FormData
+) => {
     const validatedFields = LoginFormSchema.safeParse({
         email: formData.get("email"),
         password: formData.get("password")
