@@ -7,7 +7,7 @@ type TMenuProps = {
 const Menu = ({
     children
 }: TMenuProps) => (
-    <ul className="menu menu-md bg-base-200 rounded-box w-full">
+    <ul className="menu menu-lg bg-base-300 rounded-box w-full">
         { children}
     </ul>
 )
