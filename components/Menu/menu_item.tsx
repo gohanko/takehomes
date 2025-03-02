@@ -1,20 +1,20 @@
 import classNames from "classnames"
 import Link from "next/link"
 
-type TProfileMenuItemProps = {
+type TMenuItemProps = {
     label: string,
     link: string,
-    isActive?: boolean,
+    active?: boolean,
 }
 
-const ProfileMenuItem = ({
+const MenuItem = ({
     label,
     link,
-    isActive,
-}: TProfileMenuItemProps) => (
+    active
+}: TMenuItemProps) => (
     <li>
         <Link 
-            className={classNames({ "menu-active": isActive })} 
+            className={classNames({ "menu-active": active })} 
             href={link}
         >
             {label}
@@ -22,4 +22,4 @@ const ProfileMenuItem = ({
     </li>
 )
 
-export default ProfileMenuItem
+export default MenuItem

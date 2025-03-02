@@ -1,8 +1,8 @@
 "use server"
 
 import { redirect } from 'next/navigation'
-import { createUser } from '@/lib/database/user'
-import { createProfile } from '@/lib/database/profile'
+import { createUser } from '@/services/database/user'
+import { createProfile } from '@/services/database/profile'
 import { z } from 'zod'
 import { calculateAge } from '@/utility/date'
  
@@ -30,7 +30,7 @@ const RegisterFormSchema = z.object({
 })
 
 export const register = async (
-    state: AuthenticationFormState,
+    state: FormState,
     formData: FormData
 ) => {
     const validatedFields = RegisterFormSchema.safeParse({

@@ -27,7 +27,7 @@ export const getProfileByUserId = async (userId: number) => {
     return profile
 }
 
-export const updateProfileByUserId = async (userId: number, args: any) => {
+export const updateProfileByUserId = async (userId: number, args: object) => {
     const profile = await prisma.profile.update({
         where: {
             user_id: userId

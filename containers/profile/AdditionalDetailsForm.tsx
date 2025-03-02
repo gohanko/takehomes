@@ -1,19 +1,18 @@
 "use client"
 
 import Form from "@/components/Form"
-import { editAdditionalDetails } from "../actions"
+import { editAdditionalDetails } from "../../app/profile/additional_details/actions"
 import { GENDER } from "@/constants/gender"
 import { MARITAL_STATUS } from "@/constants/marital_status"
-import { TUserAndProfile } from "../../actions"
+import { TUserAndProfile } from "../../app/profile/actions"
 import { useActionState, useState } from "react"
 import Alert from "@/components/alert"
 
 const AdditionalDetailsForm = ({
-    user,
     profile
 }: TUserAndProfile) => {
     const [isDisabled, setIsDisabled] = useState(true)
-    const [state, action, pending] = useActionState(editAdditionalDetails, undefined)
+    const [state, action] = useActionState(editAdditionalDetails, undefined)
 
     return (
         <>

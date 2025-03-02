@@ -1,18 +1,17 @@
 "use client"
 
 import Form from "@/components/Form"
-import { editBasicDetails } from "../actions"
+import { editSpouseDetails } from "../../app/profile/spouse_details/actions"
 import { SALUTATIONS } from "@/constants/salutations"
 import { useActionState, useState } from "react"
-import { TUserAndProfile } from "../../actions"
+import { TUserAndProfile } from "../../app/profile/actions"
 import Alert from "@/components/alert"
 
-const BasicDetailsForm = ({
-    user,
+const SpouseDetailsForm = ({
     profile
 }: TUserAndProfile) => {
     const [isDisabled, setIsDisabled] = useState(true)
-    const [state, action, pending] = useActionState(editBasicDetails, undefined)
+    const [state, action] = useActionState(editSpouseDetails, undefined)
 
     return (
         <>
@@ -22,46 +21,39 @@ const BasicDetailsForm = ({
             <Form action={action}>
                 <Form.Horizontal>
                     <Form.Select
-                        name="salutations"
+                        name="spouse_salutation"
                         label="Salutations"
-                        placeholder="Select Salutations"
-                        className="flex-1"
+                        placeholder="Salutations"
                         options={SALUTATIONS}
-                        required={true}
-                        defaultValue={profile.salutations || ''}
-                        validationHint={state?.errors?.salutations}
+                        defaultValue={profile.spouse_salutation || ''}
+                        validationHint={state?.errors?.spouse_salutation}
                         disabled={isDisabled}
+                        className="flex-1"
+                        required={true}
                     />
                     <Form.Input
-                        name="first_name"
+                        name="spouse_first_name"
                         label="First Name"
                         placeholder="First Name"
+                        required
                         type="text"
                         className="flex-3"
-                        defaultValue={profile.first_name}
+                        defaultValue={profile.spouse_first_name || ''}
                         disabled={isDisabled}
-                        validationHint={state?.errors?.first_name}
+                        validationHint={state?.errors?.spouse_first_name}
                     />
-                    <Form.Input 
-                        name="last_name" 
-                        label="Last Name" 
-                        placeholder="Last Name" 
+                    <Form.Input
+                        name="spouse_last_name"
+                        label="Last Name"
+                        placeholder="Last Name"
+                        required
                         type="text"
                         className="flex-3"
-                        defaultValue={profile.last_name}
+                        defaultValue={profile.spouse_last_name || ''}
+                        validationHint={state?.errors?.spouse_last_name}
                         disabled={isDisabled}
-                        validationHint={state?.errors?.last_name}
                     />
                 </Form.Horizontal>
-                <Form.Input
-                    name="email"
-                    label="Email"
-                    placeholder="Email"
-                    type="email"
-                    defaultValue={user.email}
-                    disabled={isDisabled}
-                    validationHint={state?.errors?.email}
-                />
 
                 { !isDisabled && (
                     <Form.Horizontal className="flex grow items-end">
@@ -90,4 +82,4 @@ const BasicDetailsForm = ({
     )
 }
 
-export default BasicDetailsForm
+export default SpouseDetailsForm

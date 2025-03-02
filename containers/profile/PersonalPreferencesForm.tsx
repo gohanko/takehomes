@@ -1,17 +1,16 @@
 "use client"
 
 import Form from "@/components/Form"
-import { TUserAndProfile } from "../../actions"
+import { TUserAndProfile } from "../../app/profile/actions"
 import { useActionState, useState } from "react"
-import { editPersonalPreferences } from "../actions"
+import { editPersonalPreferences } from "../../app/profile/personal_preferences/actions"
 import Alert from "@/components/alert"
 
 const PersonalPreferencesForm = ({
-    user,
     profile
 }: TUserAndProfile) => {
     const [isDisabled, setIsDisabled] = useState(true)
-    const [state, action, pending] = useActionState(editPersonalPreferences, undefined)
+    const [state, action] = useActionState(editPersonalPreferences, undefined)
 
     return (
         <>

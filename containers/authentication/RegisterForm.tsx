@@ -1,14 +1,14 @@
 "use client"
 
 import { useActionState } from 'react'
-import { register } from "../actions";
-import Form from "../../../../components/Form";
+import { register } from "../../app/authentication/register/actions";
+import Form from "../../components/Form";
 import Alert from '@/components/alert';
 import { deductYearsFromDate } from '@/utility/date';
 
 
 const RegisterForm = () => {    
-    const [state, action, pending] = useActionState(register, undefined)
+    const [state, action] = useActionState(register, undefined)
 
     return (
         <>

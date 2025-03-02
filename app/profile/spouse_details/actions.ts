@@ -1,9 +1,7 @@
 "use server"
 
-import { updateProfileByUserId } from "@/lib/database/profile"
-import { getSession } from "@/lib/session/session"
-import { decrypt } from "@/lib/session/token"
-import { cookies } from "next/headers"
+import { updateProfileByUserId } from "@/services/database/profile"
+import { getSession } from "@/services/session/session"
 import { redirect } from "next/navigation"
 import { z } from "zod"
 
@@ -20,7 +18,7 @@ const SpouseDetailsFormSchema = z.object({
 })
 
 export const editSpouseDetails = async (
-    form_state: ProfileFormState,
+    form_state: FormState,
     formData: FormData
 ) => {
     const validatedFields = SpouseDetailsFormSchema.safeParse({

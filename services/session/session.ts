@@ -17,6 +17,12 @@ export const createSession = async (userId: number) => {
     })
 }
 
+export const getSession = async () => {
+    const cookie = (await cookies()).get('session')?.value
+    const session = await decrypt(cookie)
+    return session
+}
+
 export const updateSession = async () => {
     const session = (await cookies()).get('session')?.value
     const payload = await decrypt(session)
@@ -40,10 +46,4 @@ export const updateSession = async () => {
 export const deleteSession = async () => {
     const cookieStore = await cookies()
     cookieStore.delete('session')
-}
-
-export const getSession = async () => {
-    const cookie = (await cookies()).get('session')?.value
-    const session = await decrypt(cookie)
-    return session
 }

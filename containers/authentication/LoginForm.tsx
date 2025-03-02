@@ -1,12 +1,12 @@
 "use client"
 
-import { login } from "../actions";
-import Form from "../../../../components/Form";
+import { login } from "../../app/authentication/login/actions";
+import Form from "../../components/Form";
 import { useActionState } from "react";
 import Alert from "@/components/alert";
 
 const LoginForm = () => {
-    const [state, action, pending] = useActionState(login, undefined)
+    const [state, action] = useActionState(login, undefined)
     
     return (
         <>

@@ -1,12 +1,10 @@
 "use server"
 
-import { updateProfileByUserId } from "@/lib/database/profile"
+import { updateProfileByUserId } from "@/services/database/profile"
 import { calculateAge, formatDateToISO } from "@/utility/date"
-import { decrypt } from "@/lib/session/token"
-import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { z } from "zod"
-import { getSession } from "@/lib/session/session"
+import { getSession } from "@/services/session/session"
 
 const AdditionalDetailFormSchema = z.object({
     date_of_birth: z
@@ -27,7 +25,7 @@ const AdditionalDetailFormSchema = z.object({
 })
 
 export const editAdditionalDetails = async (
-    form_state: ProfileFormState,
+    form_state: FormState,
     formData: FormData
 ) => {
     const validatedFields = AdditionalDetailFormSchema.safeParse({

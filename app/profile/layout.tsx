@@ -1,14 +1,12 @@
-"use client"
-
 import Link from "next/link";
-import Navbar from "./_components/navbar";
-import ProfileMenu from "./_components/ProfileMenu";
-import { usePathname } from "next/navigation";
+import Navbar from "../../components/navbar";
+import Menu from "../../components/Menu";
+import NavigationSideMenu from "@/containers/navigation-side-menu";
 
-const ProfileLayout = async ({
+const ProfileLayout = ({
     children
 }: TLayoutProps) => {
-    var urls = [
+    const urls = [
         {
             label: "Basic Details",
             link: "/profile/basic_details",
@@ -27,24 +25,13 @@ const ProfileLayout = async ({
         }
     ]
 
-    const currentPath = usePathname();
-
     return (
         <>
             <Navbar />
     
             <main className="flex-1 flex flex-col lg:flex-row mx-5 mb-5 gap-5">
                 <div className="flex-1 flex flex-col gap-5">
-                    <ProfileMenu>
-                        { urls.map((url, index) => (
-                            <ProfileMenu.Item 
-                                key={index}
-                                label={url.label}
-                                link={url.link}
-                                isActive={currentPath === url.link}
-                            />
-                        ))}
-                    </ProfileMenu>
+                    <NavigationSideMenu />
     
                     <Link className="hidden lg:flex btn btn-soft" href="/authentication/logout">Logout</Link>
                 </div>

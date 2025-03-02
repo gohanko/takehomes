@@ -5,7 +5,12 @@ import { JWTPayload, jwtVerify, SignJWT } from "jose"
 const secretKey = process.env.SESSION_SECRET
 const encodedKey = new TextEncoder().encode(secretKey)
 
-export const encrypt = async (payload: SessionPayload) => {
+type TSessionPayload = {
+    userId: number,
+    expiresAt: Date
+}
+
+export const encrypt = async (payload: TSessionPayload) => {
     return new SignJWT(payload)
         .setProtectedHeader({ alg: 'HS256' })
         .setIssuedAt()

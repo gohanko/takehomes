@@ -1,10 +1,8 @@
 "use server"
 
-import { updateProfileByUserId } from "@/lib/database/profile"
-import { updateUserByUserId } from "@/lib/database/user"
-import { getSession } from "@/lib/session/session"
-import { decrypt } from "@/lib/session/token"
-import { cookies } from "next/headers"
+import { updateProfileByUserId } from "@/services/database/profile"
+import { updateUserByUserId } from "@/services/database/user"
+import { getSession } from "@/services/session/session"
 import { redirect } from "next/navigation"
 import { z } from "zod"
 
@@ -22,7 +20,7 @@ const BasicDetailFormSchema = z.object({
 })
 
 export const editBasicDetails = async (
-    form_state: ProfileFormState,
+    form_state: FormState,
     formData: FormData
 ) => {
     const validatedFields = BasicDetailFormSchema.safeParse({

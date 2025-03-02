@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/database/prisma'
+import { prisma } from '@/services/database/prisma'
 import { hashPassword } from '../../utility/password'
 
 export const getUserByEmail = async (email: string) => {
@@ -34,7 +34,7 @@ export const createUser = async (email: string, password: string) => {
     return user
 }
 
-export const updateUserByUserId = async (userId: number, args: any) => {
+export const updateUserByUserId = async (userId: number, args: object) => {
     const profile = await prisma.user.update({
         where: {
             id: userId

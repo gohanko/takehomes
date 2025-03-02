@@ -1,11 +1,9 @@
 "use server"
 
-import { getProfileByUserId } from '@/lib/database/profile'
-import { getUserById } from '@/lib/database/user'
-import { getSession } from '@/lib/session/session'
-import { decrypt } from '@/lib/session/token'
+import { getProfileByUserId } from '@/services/database/profile'
+import { getUserById } from '@/services/database/user'
+import { getSession } from '@/services/session/session'
 import { Profile, User } from '@prisma/client'
-import { cookies } from 'next/headers'
 
 export type TUserAndProfile = {
     user: User,
@@ -13,7 +11,7 @@ export type TUserAndProfile = {
 }
 
 export const getUserAndProfileData = async (): Promise<TUserAndProfile> => {
-const session = await getSession()
+    const session = await getSession()
     const emptyUser: User = {
         id: 0,
         email: '',
