@@ -7,6 +7,7 @@ import { MARITAL_STATUS } from "@/constants/marital_status"
 import { TUserAndProfile } from "../../app/profile/actions"
 import { useActionState, useState } from "react"
 import Alert from "@/components/alert"
+import { deductYearsFromDate } from "@/utility/date"
 
 const AdditionalDetailsForm = ({
     profile
@@ -29,6 +30,7 @@ const AdditionalDetailsForm = ({
                         defaultValue={profile.date_of_birth ? profile.date_of_birth.toISOString().split('T')[0] : ''}
                         disabled={isDisabled}
                         validationHint={state?.errors?.date_of_birth}
+                        max={deductYearsFromDate(new Date().toLocaleDateString(), 17)}
                     />
                     <Form.Select
                         name="gender"
