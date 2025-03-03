@@ -1,4 +1,9 @@
-const handler = async () =>  {
+"use client"
+
+import { logout } from "./actions";
+
+const handler = () =>  {
+    logout()
     return <></>
 }
 

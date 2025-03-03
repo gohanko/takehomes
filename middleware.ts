@@ -1,7 +1,7 @@
 "use server"
 
 import { NextRequest, NextResponse } from 'next/server'
-import { deleteSession, getSession } from './services/session/session'
+import { getSession } from './services/session/session'
  
 const authorizedOnlyRoutes = [
     '/profile/basic_details',
@@ -41,19 +41,6 @@ export default async function middleware(req: NextRequest) {
     // If user is authenticated, redirect to basic details route
     if (isPublicRoute && session?.userId && !req.nextUrl.pathname.startsWith('/profile/basic_details')) {
         return NextResponse.redirect(new URL('/profile/basic_details', req.nextUrl))
-    }
-
-    console.log("PATH!", path)
-
-    // If logout then clear cookies, and redirect.
-    if (path.includes('/authentication/logout') && session?.userId) {
-        console.log('EXECUTED!!!!!!!!!!!!!!!!!!!!')
-        console.log("path: ", path)
-        console.log("userId", session?.userId)
-        console.log('result: ', path.includes('/authentication/logout') && session?.userId)
-
-        await deleteSession()
-        return NextResponse.redirect(new URL('/authentication/login', req.nextUrl))
     }
     
     return NextResponse.next()

@@ -2,7 +2,7 @@
 
 import { z } from 'zod'
 import { redirect } from "next/navigation"
-import { createSession } from "@/services/session/session"
+import { createSession, deleteSession } from "@/services/session/session"
 import { getUserByEmail } from "@/services/database/user"
 import { verifyPassword } from "@/utility/password"
 
