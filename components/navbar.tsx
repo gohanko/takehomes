@@ -31,7 +31,7 @@ const Navbar = () => (
                         <Link href="/profile/basic_details">Edit Profile</Link>
                     </li>
                     <li>
-                        <Link href="/authentication/logout">Log Out</Link>
+                        <Link href="/authentication/logout" prefetch={false}>Log Out</Link>
                     </li>
                 </ul>
             </div>
