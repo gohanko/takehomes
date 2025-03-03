@@ -26,7 +26,6 @@ export const login = async (
         password: formData.get("password"),
         remember_me: formData.get('remember_me') == "on"
     })
-    console.log(validatedFields.error?.flatten().fieldErrors)
     if (!validatedFields.success) {
         return { errors: validatedFields.error.flatten().fieldErrors }
     }
