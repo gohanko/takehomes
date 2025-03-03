@@ -102,8 +102,8 @@ const AdditionalDetailsForm = ({
                 <Form.Horizontal>
                     <Form.Select
                         name="state"
-                        label="State"
-                        placeholder="State"
+                        label="State/Region"
+                        placeholder="Please choose a state"
                         options={["Sarawak"]}
                         className="flex-1"
                         defaultValue={profile.state || undefined}

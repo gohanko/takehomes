@@ -51,7 +51,7 @@ model Profile {
   street_name   String?
   postcode      String?
   city_town     String?
-  state         String? @default("State")
+  state         String?
 
   interests String?
   sports    String?

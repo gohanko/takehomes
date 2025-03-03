@@ -45,6 +45,11 @@ export default async function middleware(req: NextRequest) {
 
     // If logout then clear cookies, and redirect.
     if (path.includes('/authentication/logout') && session?.userId) {
+        console.log('EXECUTED!!!!!!!!!!!!!!!!!!!!')
+        console.log("path: ", path)
+        console.log("userId", session?.userId)
+        console.log('result: ', path.includes('/authentication/logout') && session?.userId)
+
         await deleteSession()
         return NextResponse.redirect(new URL('/authentication/login', req.nextUrl))
     }
