@@ -7,7 +7,7 @@ import { redirect } from "next/navigation"
 import { z } from "zod"
 
 const BasicDetailFormSchema = z.object({
-    salutations: z.string().trim(),
+    salutations: z.string().nullable(),
     first_name: z
         .string()
         .min(2, { message: 'Name must be at least 2 characters long.' })

@@ -13,15 +13,15 @@ const AdditionalDetailFormSchema = z.object({
         .trim(),
     gender: z
         .string()
-        .trim(),
+        .nullable(),
     marital_status: z
         .string()
-        .trim(),
+        .nullable(),
     street_number: z.string().trim(),
     street_name: z.string().trim(),
     postcode: z.string().trim(),
     city_town: z.string().trim(),
-    state: z.string().trim()
+    state: z.string().nullable()
 })
 
 export const editAdditionalDetails = async (

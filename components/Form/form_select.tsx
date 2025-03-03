@@ -23,9 +23,9 @@ const FormSelect = ({
     required,
     validationHint
 }: TFormSelectProps) => (
-    <fieldset className={classNames("fieldset flex", className)} disabled={disabled}>
+    <fieldset className={classNames("fieldset flex flex-col", className)} disabled={disabled}>
         <legend className="fieldset-legend">{ label }</legend>
-        <select name={name} defaultValue={defaultValue || placeholder} required={required} className="select flex-1">
+        <select name={name} defaultValue={defaultValue || placeholder} required={required} className="select w-full">
             <option disabled={true}>{placeholder}</option>
 
             { options.map((option, index) => (

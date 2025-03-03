@@ -23,19 +23,17 @@ const SpouseDetailsForm = ({
                     <Form.Select
                         name="spouse_salutation"
                         label="Salutations"
-                        placeholder="Salutations"
+                        placeholder="Please select a salutations"
                         options={SALUTATIONS}
                         defaultValue={profile.spouse_salutation || ''}
                         validationHint={state?.errors?.spouse_salutation}
                         disabled={isDisabled}
                         className="flex-1"
-                        required={true}
                     />
                     <Form.Input
                         name="spouse_first_name"
                         label="First Name"
                         placeholder="First Name"
-                        required
                         type="text"
                         className="flex-3"
                         defaultValue={profile.spouse_first_name || ''}
@@ -46,7 +44,6 @@ const SpouseDetailsForm = ({
                         name="spouse_last_name"
                         label="Last Name"
                         placeholder="Last Name"
-                        required
                         type="text"
                         className="flex-3"
                         defaultValue={profile.spouse_last_name || ''}

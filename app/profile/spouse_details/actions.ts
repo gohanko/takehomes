@@ -6,14 +6,12 @@ import { redirect } from "next/navigation"
 import { z } from "zod"
 
 const SpouseDetailsFormSchema = z.object({
-    spouse_salutation: z.string().trim(),
+    spouse_salutation: z.string().nullable(),
     spouse_first_name: z
         .string()
-        .min(2, { message: 'Name must be at least 2 characters long.' })
         .trim(),
     spouse_last_name: z
         .string()
-        .min(2, { message: 'Name must be at least 2 characters long.' })
         .trim(),
 })
 
