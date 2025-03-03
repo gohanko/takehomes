@@ -26,7 +26,7 @@ const NavigationSideMenu = ({
         }
     ]
 
-    if (!['Single', 'Divorced', null].includes(profile.marital_status)) {
+    if (profile.marital_status == 'Married') {
         menuItems.splice(2, 0, {
             label: "Spouse Details",
             link: "/profile/spouse_details"
