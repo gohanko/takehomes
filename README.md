@@ -1,11 +1,7 @@
 # naluri-takehome
-Take Home Assessment for [Naluri](https://www.naluri.life/). 
+This is a simple HTTP server written in FastAPI to continuously calculate Pi using the [Leibniz formula for Pi](https://en.wikipedia.org/wiki/Leibniz_formula_for_%CF%80). This is also a Take Home Assessment for [Naluri](https://www.naluri.life/). 
 
-This is a simple HTTP server written in FastAPI to continuously calculate Pi using the [Leibniz formula for Pi](https://en.wikipedia.org/wiki/Leibniz_formula_for_%CF%80).
-
-## Getting Started
-
-### Technologies
+## Technologies
 The application is built using the following technologies.
 
 - Python v3.13.2 (and Pip the package manager)
@@ -15,7 +11,7 @@ The application is built using the following technologies.
 
 So ideally, please install Python v3.13 and it's corresponding Pip version (if it doesn't come with it).
 
-### Installation
+## Installation
 Here is the installation instruction:
 
 - Install the virtualenv package: `pip install virtualenv`
@@ -27,5 +23,13 @@ Here is the installation instruction:
 
 And with that it should be ready to go!
 
-### Run it
-To run it, you can imply do: `fastapi dev naluri_takehome/main.py`
+### Running the application
+To run it, you can simply do: `fastapi dev naluri_takehome/main.py`
+
+There are 3 URLs you have to look at, namely:
+
+- [GET /calculating_pi/start](http://127.0.0.1:8000/calculating_pi/start) - This endpoint starts the calculation.
+- [GET /calculating_pi/result](http://127.0.0.1:8000/calculating_pi/result) - The page to get the latest calculation of PI and the circumference of the sun. Keep refreshing to see new ones! 
+- [GET /calculating_pi/stop](http://127.0.0.1:8000/calculating_pi/stop) - Stops the calculation, but doesn't actually work because FastAPI background tasks can't be elegantly killed. Workaround would probably to find and kill the child process but that's a bit out of scope.
+
+Hopefully, it works well on your. Please let me know if there is any issues, or inquiries.
