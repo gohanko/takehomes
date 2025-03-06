@@ -5,8 +5,8 @@ This is a simple NextJS application to demonstrate ability to work on React fron
 Features implemented on both UI and API side include:
 
 - Authentication
-    - Login
-    - Register
+    - Login (with JWT tokens)
+    - Register (with proper password salting and hashing)
     - Logout
 - Profile
     - Basic Profile
