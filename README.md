@@ -1,7 +1,7 @@
 # naluri-takehome
 Take Home Assessment for [Naluri](https://www.naluri.life/). 
 
-This is a simple HTTP server written in FastAPI to continuously calculate Pi using the Leibniz formula for Pi.
+This is a simple HTTP server written in FastAPI to continuously calculate Pi using the [Leibniz formula for Pi](https://en.wikipedia.org/wiki/Leibniz_formula_for_%CF%80).
 
 ## Getting Started
 
