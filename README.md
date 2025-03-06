@@ -23,7 +23,7 @@ Here is the installation instruction:
 
 And with that it should be ready to go!
 
-### Running the application
+## Running the application
 To run it, you can simply do: `fastapi dev naluri_takehome/main.py`
 
 There are 3 URLs you have to look at, namely:
