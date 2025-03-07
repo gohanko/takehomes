@@ -10,42 +10,30 @@ const authorizedOnlyRoutes = [
     '/profile/personal_preferences',
 ]
 
-const anonymousOnlyRoutes = [
+const unauthorizedOnlyRoutes = [
     '/authentication/login',
     '/authentication/register',
 ]
-
-const publicRoutes = anonymousOnlyRoutes
  
 export default async function middleware(req: NextRequest) {
-    // Check if the current route is protected or public
-    const path = req.nextUrl.pathname
-    const isPublicRoute = publicRoutes.includes(path)
+    const session = await getSession()
+    const isUserAuthorized = Boolean(session?.userId)
     
-    // Decrypt the session from the cookie
-    const session = await getSession()    
-
-    // Redirect to /login if the user is not authenticated
-    const isProtectedRoute = authorizedOnlyRoutes.includes(path)
-    if (isProtectedRoute && !session?.userId) {
+    const path = req.nextUrl.pathname
+    const isAuthorizedOnlyRoutes = authorizedOnlyRoutes.includes(path)
+    if (isAuthorizedOnlyRoutes && !isUserAuthorized) {
         return NextResponse.redirect(new URL('/authentication/login', req.nextUrl))
     }
-    
-    // If on anonymous only routes but is authenticated redirect to basic details page.
-    const isAnonymousOnlyRoute = anonymousOnlyRoutes.includes(path)
-    if (isAnonymousOnlyRoute && session?.userId) {
+
+    const isUnauthorizedOnlyRoutes = unauthorizedOnlyRoutes.includes(path)
+    if (isUnauthorizedOnlyRoutes && isUserAuthorized) {
         return NextResponse.redirect(new URL('/profile/basic_details', req.nextUrl))
     }
 
-    // If user is authenticated, redirect to basic details route
-    if (isPublicRoute && session?.userId && !req.nextUrl.pathname.startsWith('/profile/basic_details')) {
-        return NextResponse.redirect(new URL('/profile/basic_details', req.nextUrl))
-    }
-    
     return NextResponse.next()
 }
  
 // Routes that the middleware should not run on
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
+    matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
 }
