@@ -54,7 +54,7 @@ export const editAdditionalDetails = async (
         state,
     } = validatedFields.data;
 
-const session = await getSession()
+    const session = await getSession()
     const age = calculateAge(date_of_birth)
     if (age < 17) {
         return {

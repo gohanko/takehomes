@@ -1,5 +1,5 @@
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -35,6 +35,8 @@ model Profile {
   id      Int  @id @default(autoincrement())
   user    User @relation(fields: [user_id], references: [id])
   user_id Int  @unique
+
+  profile_picture_url String?
 
   salutations   Salutation?
   first_name    String

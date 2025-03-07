@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import FormCard from "@/components/FormCard";
-import LoginForm from '../../../containers/authentication/LoginForm';
+import LoginForm from '../../../containers/forms/LoginForm';
 
 const handler = () => (
     <FormCard>

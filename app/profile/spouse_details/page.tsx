@@ -1,5 +1,5 @@
 import { getUserAndProfileData } from "../actions";
-import SpouseDetailsForm from "../../../containers/profile/SpouseDetailsForm";
+import SpouseDetailsForm from "../../../containers/forms/SpouseDetailsForm";
 import { redirect } from "next/navigation";
 
 const handler = async () =>  {

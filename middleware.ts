@@ -8,6 +8,7 @@ const authorizedOnlyRoutes = [
     '/profile/additional_details',
     '/profile/spouse_details',
     '/profile/personal_preferences',
+    '/api/upload_file'
 ]
 
 const unauthorizedOnlyRoutes = [

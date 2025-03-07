@@ -23,6 +23,7 @@ export const getUserAndProfileData = async (): Promise<TUserAndProfile> => {
         user_id: 0,
         first_name: '',
         last_name: '',
+        profile_picture_url: "",
         date_of_birth: null,
         gender: 'Male',
         marital_status: "Single",

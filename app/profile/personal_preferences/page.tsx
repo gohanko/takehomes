@@ -1,5 +1,5 @@
 import { getUserAndProfileData } from "../actions";
-import PersonalPreferencesForm from "../../../containers/profile/PersonalPreferencesForm";
+import PersonalPreferencesForm from "../../../containers/forms/PersonalPreferencesForm";
 
 
 const handler = async () =>  {
