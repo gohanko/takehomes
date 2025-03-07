@@ -1,21 +1,10 @@
 "use server"
 
-import { z } from 'zod'
 import { redirect } from "next/navigation"
 import { createSession } from "@/services/session/session"
 import { getUserByEmail } from "@/services/database/user"
 import { verifyPassword } from "@/utility/password"
-
-const LoginFormSchema = z.object({
-    email: z.string().email({ message: 'Please enter a valid email.' }).trim(),
-    password: z
-        .string()
-        .min(8, { message: 'Be at least 8 characters long' })
-        .regex(/[a-zA-Z]/, { message: 'Contain at least one letter.' })
-        .regex(/[0-9]/, { message: 'Contain at least one number.' })
-        .trim(),
-    remember_me: z.boolean()
-})
+import { LoginFormSchema } from "./schema"
 
 export const login = async (
     state: FormState,
