@@ -50,6 +50,6 @@
     "typescript": "^5"
   },
   "prisma": {
-    "schema": "services/database/schema/schema.prisma"
+    "schema": "src/services/database/schema/schema.prisma"
   }
 }
