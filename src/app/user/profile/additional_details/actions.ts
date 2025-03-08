@@ -5,6 +5,7 @@ import { calculateAge, formatDateToISO } from "@/utility/date-manipulation"
 import { redirect } from "next/navigation"
 import { z } from "zod"
 import { getSession } from "@/services/session/session"
+import { routesConfig } from "@/configs/routes-config"
 
 const AdditionalDetailFormSchema = z.object({
     date_of_birth: z
@@ -82,5 +83,5 @@ export const editAdditionalDetails = async (
         return { message: "Profile Update went wrong!"}
     }
 
-    redirect("/user/profile/additional_details")
+    redirect(routesConfig.user_profile_additional_details.route)
 }

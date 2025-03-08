@@ -1,3 +1,4 @@
+import { routesConfig } from "@/configs/routes-config";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -5,17 +6,17 @@ const nextConfig: NextConfig = {
         return [
             {
                 source: '/',
-                destination: '/authentication/login',
+                destination: routesConfig.authentication_login.route,
                 permanent: true,
             },
             {
                 source: '/authentication',
-                destination: '/authentication/login',
+                destination: routesConfig.authentication_login.route,
                 permanent: true,
             },
             {
-                source: '/profile',
-                destination: '/profile/basic_details',
+                source: '/user/profile',
+                destination: routesConfig.user_profile_basic_details.route,
                 permanent: true,
             },
         ]

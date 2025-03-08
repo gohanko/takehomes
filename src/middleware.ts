@@ -12,13 +12,13 @@ export default async function middleware(req: NextRequest) {
     const routeConfig = Object.values(routesConfig).filter(route => route.route == currentPath)[0]
 
     const isAuthenticatedOnly = routeConfig.authenticatedOnly
-    if (!isAuthenticatedOnly && !isUserAuthorized) {
-        return NextResponse.redirect(new URL('/authentication/login', req.nextUrl))
+    if (isAuthenticatedOnly && !isUserAuthorized) {
+        return NextResponse.redirect(new URL(routesConfig.authentication_login.route, req.nextUrl))
     }
     
     const isPublicOnly = routeConfig.publicOnly
     if (isPublicOnly && isUserAuthorized) {
-        return NextResponse.redirect(new URL('/user/profile/basic_details', req.nextUrl))
+        return NextResponse.redirect(new URL(routesConfig.user_profile_basic_details.route, req.nextUrl))
     }
 
     return NextResponse.next()

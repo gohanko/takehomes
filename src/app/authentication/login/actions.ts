@@ -5,6 +5,7 @@ import { createSession } from "@/services/session/session"
 import { getUserByEmail } from "@/services/database/user"
 import { verifyPassword } from "@/utility/password"
 import { LoginFormSchema } from "./schema"
+import { routesConfig } from "@/configs/routes-config"
 
 export const login = async (
     state: FormState,
@@ -36,5 +37,5 @@ export const login = async (
 
     await createSession(user.id, remember_me)
 
-    redirect('/user/profile/basic_details')
+    redirect(routesConfig.user_profile_basic_details.route)
 }

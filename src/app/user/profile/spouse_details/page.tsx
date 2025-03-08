@@ -1,12 +1,13 @@
 import { getUserAndProfileData } from "../actions";
 import { SpouseDetailsForm } from "@/components/features/user/profile/spouse-details-form";
+import { routesConfig } from "@/configs/routes-config";
 import { redirect } from "next/navigation";
 
 const handler = async () =>  {
     const { user, profile } = await getUserAndProfileData()
 
     if (profile.marital_status != "Married") {
-        redirect("/user/profile/basic_details/")
+        redirect(routesConfig.user_profile_basic_details.route)
     }
 
     return (

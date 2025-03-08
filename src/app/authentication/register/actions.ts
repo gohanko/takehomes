@@ -5,6 +5,7 @@ import { createUser } from '@/services/database/user'
 import { createProfile } from '@/services/database/profile'
 import { calculateAge } from '@/utility/date-manipulation'
 import { RegisterFormSchema } from './schema'
+import { routesConfig } from '@/configs/routes-config'
 
 export const register = async (
     state: FormState,
@@ -57,5 +58,5 @@ export const register = async (
     }
 
     await createProfile(user.id, first_name, last_name, date_of_birth)
-    redirect('/authentication/login')
+    redirect(routesConfig.authentication_login.route)
 }

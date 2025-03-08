@@ -1,3 +1,4 @@
+import { routesConfig } from "@/configs/routes-config"
 import Link from "next/link"
 
 export const Navbar = () => (
@@ -22,16 +23,16 @@ export const Navbar = () => (
                     tabIndex={0}
                     className="menu menu-md dropdown-content bg-base-300 rounded-box z-1 mt-3 w-52 p-2 shadow-sm">
                     <li>
-                        <Link href="/user/profile/basic_details">Home</Link>
+                        <Link href={routesConfig.user_profile_basic_details.route}>Home</Link>
                     </li>
                     <li>
-                        <Link href="/user/profile/basic_details">My Profile</Link>
+                        <Link href={routesConfig.user_profile_basic_details.route}>My Profile</Link>
                     </li>
                     <li>
-                        <Link href="/user/profile/basic_details">Edit Profile</Link>
+                        <Link href={routesConfig.user_profile_basic_details.route}>Edit Profile</Link>
                     </li>
                     <li>
-                        <Link href="/authentication/logout" prefetch={false}>Log Out</Link>
+                        <Link href={routesConfig.api_authentication_logout.route} prefetch={false}>Log Out</Link>
                     </li>
                 </ul>
             </div>

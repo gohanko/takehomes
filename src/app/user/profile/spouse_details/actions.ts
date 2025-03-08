@@ -1,5 +1,6 @@
 "use server"
 
+import { routesConfig } from "@/configs/routes-config"
 import { updateProfileByUserId } from "@/services/database/profile"
 import { getSession } from "@/services/session/session"
 import { redirect } from "next/navigation"
@@ -47,5 +48,5 @@ const session = await getSession()
         return { message: "Profile Update went wrong!"}
     }
 
-    redirect("/user/profile/spouse_details")
+    redirect(routesConfig.user_profile_spouse_details.route)
 }

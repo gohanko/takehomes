@@ -1,6 +1,7 @@
 "use client"
 
 import { Menu } from "@/components/ui/Menu"
+import { routesConfig } from "@/configs/routes-config"
 import { Profile } from "@prisma/client"
 import { usePathname } from "next/navigation"
 
@@ -14,22 +15,22 @@ export const NavigationSideMenu = ({
     const menuItems = [
         {
             label: "Basic Details",
-            link: "/user/profile/basic_details",
+            link: routesConfig.user_profile_basic_details.route,
         },
         {
             label: "Additional Details",
-            link: "/user/profile/additional_details"
+            link: routesConfig.user_profile_additional_details.route
         },
         {
             label: "Personal Preferences",
-            link: "/user/profile/personal_preferences"
+            link: routesConfig.user_profile_personal_preferences.route
         }
     ]
 
     if (profile.marital_status == 'Married') {
         menuItems.splice(2, 0, {
             label: "Spouse Details",
-            link: "/user/profile/spouse_details"
+            link: routesConfig.user_profile_spouse_details.route
         },)
     }
 

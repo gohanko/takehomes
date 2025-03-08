@@ -1,5 +1,6 @@
 "use server"
 
+import { routesConfig } from "@/configs/routes-config"
 import { updateProfileByUserId } from "@/services/database/profile"
 import { getSession } from "@/services/session/session"
 import { redirect } from "next/navigation"
@@ -51,5 +52,5 @@ export const editPersonalPreferences = async (
         return { message: "Something wrong!" }
     }
 
-    redirect('/user/profile/personal_preferences')
+    redirect(routesConfig.user_profile_personal_preferences.route)
 }
