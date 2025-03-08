@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getSession } from './services/session/session'
-import { routesConfig } from './constants/routesConfig'
+import { routesConfig } from './configs/routesConfig'
 
 export default async function middleware(req: NextRequest) {
     const session = await getSession()
