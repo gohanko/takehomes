@@ -2,12 +2,10 @@ type TFormCardBodyProps = {
     children: React.ReactNode,
 }
 
-const FormCardBody = ({
+export const FormCardBody = ({
     children
 }: TFormCardBodyProps) => (
     <>
         { children }
     </>
 )
-
-export default FormCardBody

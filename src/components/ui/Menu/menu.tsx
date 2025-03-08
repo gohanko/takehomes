@@ -1,10 +1,10 @@
-import MenuItem from "./menu_item";
+import { MenuItem } from "./menu_item";
 
 type TMenuProps = {
     children: React.ReactNode[]
 }
 
-const Menu = ({
+export const Menu = ({
     children
 }: TMenuProps) => (
     <ul className="menu menu-md bg-base-300 rounded-box w-full">
@@ -13,5 +13,3 @@ const Menu = ({
 )
 
 Menu.Item = MenuItem
-
-export default Menu;

@@ -1,14 +1,14 @@
 "use client"
 
-import Form from "@/components/ui/Form"
+import { Form } from "@/components/ui/Form"
 import { editAdditionalDetails } from "@/app/user/profile/additional_details/actions"
 import { GENDER, MARITAL_STATUS } from "@/constants/forms"
 import { TUserAndProfile } from "@/app/user/profile/actions"
 import { useActionState, useState } from "react"
-import Alert from "@/components/ui/alert"
+import { Alert } from "@/components/ui/alert"
 import { deductYearsFromDate } from "@/utility/date"
 
-const AdditionalDetailsForm = ({
+export const AdditionalDetailsForm = ({
     profile
 }: TUserAndProfile) => {
     const [isDisabled, setIsDisabled] = useState(true)
@@ -139,5 +139,3 @@ const AdditionalDetailsForm = ({
         </>
     )
 }
-
-export default AdditionalDetailsForm;

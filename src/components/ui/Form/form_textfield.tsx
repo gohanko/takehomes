@@ -11,7 +11,7 @@ type TFormTextFieldProps = {
     disabled?: boolean
 }
 
-const FormTextField = ({
+export const FormTextField = ({
     label,
     name,
     placeholder,
@@ -36,5 +36,3 @@ const FormTextField = ({
         ))}
     </fieldset>
 )
-
-export default FormTextField

@@ -12,7 +12,7 @@ type TFormSelectProps = {
     validationHint?: string[]
 }
 
-const FormSelect = ({
+export const FormSelect = ({
     label,
     name,
     placeholder,
@@ -37,5 +37,3 @@ const FormSelect = ({
         ))}
     </fieldset>
 )
-
-export default FormSelect

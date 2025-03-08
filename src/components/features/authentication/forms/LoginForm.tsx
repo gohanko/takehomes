@@ -1,11 +1,11 @@
 "use client"
 
 import { login } from "@/app/authentication/login/actions";
-import Form from "@/components/ui/Form";
+import { Form } from "@/components/ui/Form";
 import { useActionState } from "react";
-import Alert from "@/components/ui/alert";
+import { Alert } from "@/components/ui/alert";
 
-const LoginForm = () => {
+export const LoginForm = () => {
     const [state, action] = useActionState(login, undefined)
     
     return (
@@ -43,5 +43,3 @@ const LoginForm = () => {
         </>
     )
 }
-
-export default LoginForm

@@ -5,7 +5,7 @@ type TFormCheckboxProps = {
     defaultChecked: boolean
 }
 
-const FormCheckbox = ({
+export const FormCheckbox = ({
     label,
     name,
     defaultChecked
@@ -18,5 +18,3 @@ const FormCheckbox = ({
 
     </fieldset>
 )
-
-export default FormCheckbox

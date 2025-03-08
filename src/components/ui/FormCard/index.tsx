@@ -1,3 +1,3 @@
-import FormCard from './form_card'
+import { FormCard } from './form_card'
 
-export default FormCard
+export { FormCard }

@@ -6,7 +6,7 @@ type TFormHorizontalProps = {
     className?: string
 }
 
-const FormHorizontal = ({
+export const FormHorizontal = ({
     children,
     className,
 }: TFormHorizontalProps) => (
@@ -14,5 +14,3 @@ const FormHorizontal = ({
         { children }
     </div>
 )
-
-export default FormHorizontal

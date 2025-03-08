@@ -4,7 +4,7 @@ type TFormCardHeaderSubtitleProps = {
     children: ReactNode
 }
 
-const FormCardHeaderSubtitle = ({
+export const FormCardHeaderSubtitle = ({
     children
 }: TFormCardHeaderSubtitleProps) => (
     <div className="grow-0">
@@ -13,5 +13,3 @@ const FormCardHeaderSubtitle = ({
         </span>
     </div>
 )
-
-export default FormCardHeaderSubtitle

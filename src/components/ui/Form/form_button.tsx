@@ -8,7 +8,7 @@ type TFormButtonProps = {
     onClick?: () => void
 }
 
-const FormButton = ({
+export const FormButton = ({
     label,
     type,
     color,
@@ -32,5 +32,3 @@ const FormButton = ({
         </button>
     </fieldset>
 )
-
-export default FormButton

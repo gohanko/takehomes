@@ -4,7 +4,7 @@ type TAlertProps = {
     children: ReactNode
 }
 
-const Alert = ({
+export const Alert = ({
     children
 }: TAlertProps) => (
     <div role="alert" className="alert alert-error">
@@ -14,5 +14,3 @@ const Alert = ({
         <span>{ children }</span>
     </div>
 )
-
-export default Alert

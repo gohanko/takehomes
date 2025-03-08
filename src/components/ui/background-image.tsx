@@ -14,7 +14,7 @@ type TBackgroundImageAdditionalProps = Omit<
     keyof TBackgroundImageProps
 >;
 
-const BackgroundImage = ({
+export const BackgroundImage = ({
     children,
     className,
     image,
@@ -30,5 +30,3 @@ const BackgroundImage = ({
         </div>
     );
 }
-
-export default BackgroundImage

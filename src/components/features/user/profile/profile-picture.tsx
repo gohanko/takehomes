@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import Form from "@/components/ui/Form";
+import { Form } from "@/components/ui/Form";
 import { useUploadProfilePicture } from "@/hooks/useUploadProfilePicture"
 
 type TProfilePictureProps = {

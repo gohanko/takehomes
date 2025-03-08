@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Navbar from "@/components/layout/navbar";
-import NavigationSideMenu from "@/components/layout/navigation-side-menu";
+import { Navbar } from "@/components/layout/navbar";
+import { NavigationSideMenu } from "@/components/layout/navigation-side-menu";
 import { getUserAndProfileData } from "./actions";
 
-const ProfileLayout = async ({
+const Layout = async ({
     children
 }: TLayoutProps) => {
     const { profile } = await getUserAndProfileData()
@@ -27,4 +27,4 @@ const ProfileLayout = async ({
     )
 }
 
-export default ProfileLayout;
+export default Layout;

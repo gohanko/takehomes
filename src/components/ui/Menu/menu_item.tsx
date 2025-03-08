@@ -7,7 +7,7 @@ type TMenuItemProps = {
     active?: boolean,
 }
 
-const MenuItem = ({
+export const MenuItem = ({
     label,
     link,
     active
@@ -21,5 +21,3 @@ const MenuItem = ({
         </Link>
     </li>
 )
-
-export default MenuItem

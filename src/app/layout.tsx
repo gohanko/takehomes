@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description: "A takehome application for Convertium",
 };
 
-const RootLayout = ({
+const Layout = ({
     children
 }: TLayoutProps) => (
     <html lang="en" data-theme="dark">
@@ -27,4 +27,4 @@ const RootLayout = ({
     </html>
 );
 
-export default RootLayout;
+export default Layout;

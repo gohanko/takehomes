@@ -1,6 +1,6 @@
 "use client"
 
-import Menu from "@/components/ui/Menu"
+import { Menu } from "@/components/ui/Menu"
 import { Profile } from "@prisma/client"
 import { usePathname } from "next/navigation"
 
@@ -8,7 +8,7 @@ type TNavigationSideMenuProps = {
     profile: Profile
 }
 
-const NavigationSideMenu = ({
+export const NavigationSideMenu = ({
     profile
 }: TNavigationSideMenuProps) => {
     const menuItems = [
@@ -47,5 +47,3 @@ const NavigationSideMenu = ({
         </Menu>
     )
 }
-
-export default NavigationSideMenu

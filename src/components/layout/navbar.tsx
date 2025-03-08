@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-const Navbar = () => (
+export const Navbar = () => (
     <div className="navbar bg-base-200">
         <div className="navbar-start">
             <div className="dropdown">
@@ -39,5 +39,3 @@ const Navbar = () => (
         </div>
     </div>
 )
-
-export default Navbar

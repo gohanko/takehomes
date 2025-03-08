@@ -12,10 +12,9 @@ type TFormInputProps = {
     disabled?: boolean,
     max?: string,
     min?: string,
-
 }
 
-const FormInput = ({
+export const FormInput = ({
     label,
     name,
     placeholder,
@@ -45,5 +44,3 @@ const FormInput = ({
         ))}
     </fieldset>
 )
-
-export default FormInput

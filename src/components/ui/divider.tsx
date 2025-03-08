@@ -4,7 +4,7 @@ type TDividerProps = {
     children: ReactNode
 }
 
-const Divider = ({
+export const Divider = ({
     children
 }: TDividerProps) => (
     <div className="flex w-full flex-col">
@@ -13,5 +13,3 @@ const Divider = ({
         </div>
     </div>
 )
-
-export default Divider

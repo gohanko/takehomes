@@ -1,13 +1,13 @@
 "use client"
 
-import Form from "@/components/ui/Form"
+import { Form } from "@/components/ui/Form"
 import { editSpouseDetails } from "@/app/user/profile/spouse_details/actions"
 import { SALUTATIONS } from "@/constants/forms"
 import { useActionState, useState } from "react"
 import { TUserAndProfile } from "@/app/user/profile/actions"
-import Alert from "@/components/ui/alert"
+import { Alert } from "@/components/ui/alert"
 
-const SpouseDetailsForm = ({
+export const SpouseDetailsForm = ({
     profile
 }: TUserAndProfile) => {
     const [isDisabled, setIsDisabled] = useState(true)
@@ -78,5 +78,3 @@ const SpouseDetailsForm = ({
         </>
     )
 }
-
-export default SpouseDetailsForm

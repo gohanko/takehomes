@@ -1,12 +1,12 @@
 "use client"
 
-import Form from "@/components/ui/Form"
+import { Form } from "@/components/ui/Form"
 import { TUserAndProfile } from "@/app/user/profile/actions"
 import { useActionState, useState } from "react"
 import { editPersonalPreferences } from "@/app/user/profile/personal_preferences/actions"
-import Alert from "@/components/ui/alert"
+import { Alert } from "@/components/ui/alert"
 
-const PersonalPreferencesForm = ({
+export const PersonalPreferencesForm = ({
     profile
 }: TUserAndProfile) => {
     const [isDisabled, setIsDisabled] = useState(true)
@@ -88,5 +88,3 @@ const PersonalPreferencesForm = ({
         </>
     )
 }
-
-export default PersonalPreferencesForm

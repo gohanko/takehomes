@@ -2,12 +2,12 @@
 
 import { useActionState } from 'react'
 import { register } from "@/app/authentication/register/actions";
-import Form from "@/components/ui/Form";
-import Alert from '@/components/ui/alert';
+import { Form } from "@/components/ui/Form";
+import { Alert } from '@/components/ui/alert';
 import { deductYearsFromDate } from '@/utility/date';
 
 
-const RegisterForm = () => {    
+export const RegisterForm = () => {    
     const [state, action] = useActionState(register, undefined)
 
     return (
@@ -82,5 +82,3 @@ const RegisterForm = () => {
         </>
     )
 }
-
-export default RegisterForm

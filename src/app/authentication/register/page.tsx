@@ -1,7 +1,6 @@
 import Link from 'next/link'
-
-import FormCard from "@/components/ui/FormCard";
-import RegisterForm from "@/components/features/authentication/forms/RegisterForm";
+import { FormCard } from "@/components/ui/FormCard";
+import { RegisterForm } from "@/components/features/authentication/forms/RegisterForm";
 
 const handler = () => (
     <FormCard>

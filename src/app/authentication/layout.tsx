@@ -1,8 +1,8 @@
 import Image from "next/image";
-import BackgroundImage from "@/components/ui/background-image";
+import { BackgroundImage } from "@/components/ui/background-image";
 import authBg from "../../../public/auth_bg.jpg";
 
-const AuthenticationLayout = ({
+const Layout = ({
     children
 }: TLayoutProps) => (
     <div className="flex flex-col-reverse lg:flex-row gap-5 h-screen pt-2 px-2 lg:p-5 overflow-scroll">        
@@ -24,4 +24,4 @@ const AuthenticationLayout = ({
     </div>
 )
 
-export default AuthenticationLayout;
+export default Layout;

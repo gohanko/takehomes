@@ -1,12 +1,12 @@
-import FormButton from "./form_button";
-import FormInput from "./form_input";
-import FormCheckbox from "./form_checkbox";
-import FormSelect from "./form_select";
-import FormHorizontal from "./form_horizontal";
-import Divider from "../divider";
-import FormTextField from "./form_textfield";
-import { FormFileInput } from "./form_file_input";
 import classNames from "classnames";
+import { FormButton } from "./form_button";
+import { FormInput } from "./form_input";
+import { FormCheckbox } from "./form_checkbox";
+import { FormSelect } from "./form_select";
+import { FormHorizontal } from "./form_horizontal";
+import { Divider } from "../divider";
+import { FormTextField } from "./form_textfield";
+import { FormFileInput } from "./form_file_input";
 
 interface TFormProps {
     children: React.ReactNode,
@@ -14,7 +14,7 @@ interface TFormProps {
     action: (form: FormData) => void
 }
 
-const Form = ({
+export const Form = ({
     children,
     className,
     action,
@@ -32,5 +32,3 @@ Form.Select = FormSelect;
 Form.Horizontal = FormHorizontal
 Form.Divider = Divider
 Form.FileInput = FormFileInput
-
-export default Form
