@@ -1,5 +1,5 @@
 import { getUserAndProfileData } from "../actions";
-import BasicDetailsForm from "@/components/features/profile/forms/BasicDetailsForm";
+import BasicDetailsForm from "@/components/features/user/profile/forms/BasicDetailsForm";
 
 const handler = async () =>  {
     const { user, profile } = await getUserAndProfileData()

@@ -1,23 +1,22 @@
 "use client"
-
-import { Avatar } from "@/components/ui/avatar";
+import Image from "next/image";
 import Form from "@/components/ui/Form";
-import { useUploadFile } from "@/hooks/useUploadFile"
+import { useUploadProfilePicture } from "@/hooks/useUploadProfilePicture"
 
-type TImageUploaderProps = {
+type TProfilePictureProps = {
     imageUrl?: string
 }
 
-export const ImageUploader = ({
-    imageUrl,
-}: TImageUploaderProps) => {
+export const ProfilePicture = ({
+    imageUrl = `https://api.dicebear.com/9.x/identicon/svg?seed=aaa`,
+}: TProfilePictureProps) => {
     const {
         isUploading,
         message,
         errorMessage,
         uploadedFilePath,
         uploadFile
-    } = useUploadFile();
+    } = useUploadProfilePicture();
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
@@ -27,14 +26,22 @@ export const ImageUploader = ({
 
     return (
         <div className="flex flex-col">
-            <Avatar url={uploadedFilePath || imageUrl} />
+            <div className="avatar">
+                <div className="ring-primary ring-offset-base-100 w-44 rounded-full bg-base-200 ring ring-offset-2">
+                    <Image
+                        src={uploadedFilePath || imageUrl}
+                        alt="Avatar Picture"
+                        width="176"
+                        height="176"
+                    />
+                </div>
+            </div>
 
             <Form.FileInput 
                 legend="Select a image"
                 onChange={onChange}
                 label={message || errorMessage}
             />
-
 
             { isUploading && (
                 <>

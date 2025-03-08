@@ -47,5 +47,5 @@ const session = await getSession()
         return { message: "Profile Update went wrong!"}
     }
 
-    redirect("/profile/spouse_details")
+    redirect("/user/profile/spouse_details")
 }

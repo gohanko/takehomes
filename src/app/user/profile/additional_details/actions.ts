@@ -82,5 +82,5 @@ export const editAdditionalDetails = async (
         return { message: "Profile Update went wrong!"}
     }
 
-    redirect("/profile/additional_details")
+    redirect("/user/profile/additional_details")
 }

@@ -1,10 +1,9 @@
 "use client"
 
 import Form from "@/components/ui/Form"
-import { editAdditionalDetails } from "@/app/profile/additional_details/actions"
-import { GENDER } from "@/constants/gender"
-import { MARITAL_STATUS } from "@/constants/marital_status"
-import { TUserAndProfile } from "@/app/profile/actions"
+import { editAdditionalDetails } from "@/app/user/profile/additional_details/actions"
+import { GENDER, MARITAL_STATUS } from "@/constants/forms"
+import { TUserAndProfile } from "@/app/user/profile/actions"
 import { useActionState, useState } from "react"
 import Alert from "@/components/ui/alert"
 import { deductYearsFromDate } from "@/utility/date"

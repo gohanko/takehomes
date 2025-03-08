@@ -1,10 +1,10 @@
 "use client"
 
 import Form from "@/components/ui/Form"
-import { editSpouseDetails } from "@/app/profile/spouse_details/actions"
-import { SALUTATIONS } from "@/constants/salutations"
+import { editSpouseDetails } from "@/app/user/profile/spouse_details/actions"
+import { SALUTATIONS } from "@/constants/forms"
 import { useActionState, useState } from "react"
-import { TUserAndProfile } from "@/app/profile/actions"
+import { TUserAndProfile } from "@/app/user/profile/actions"
 import Alert from "@/components/ui/alert"
 
 const SpouseDetailsForm = ({

@@ -51,5 +51,5 @@ export const editPersonalPreferences = async (
         return { message: "Something wrong!" }
     }
 
-    redirect('/profile/personal_preferences')
+    redirect('/user/profile/personal_preferences')
 }

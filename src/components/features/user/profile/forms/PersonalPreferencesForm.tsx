@@ -1,9 +1,9 @@
 "use client"
 
 import Form from "@/components/ui/Form"
-import { TUserAndProfile } from "@/app/profile/actions"
+import { TUserAndProfile } from "@/app/user/profile/actions"
 import { useActionState, useState } from "react"
-import { editPersonalPreferences } from "@/app/profile/personal_preferences/actions"
+import { editPersonalPreferences } from "@/app/user/profile/personal_preferences/actions"
 import Alert from "@/components/ui/alert"
 
 const PersonalPreferencesForm = ({

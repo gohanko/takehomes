@@ -2,33 +2,23 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getSession } from './services/session/session'
- 
-const authorizedOnlyRoutes = [
-    '/profile/basic_details',
-    '/profile/additional_details',
-    '/profile/spouse_details',
-    '/profile/personal_preferences',
-    '/api/upload_file'
-]
+import { routesConfig } from './constants/routesConfig'
 
-const unauthorizedOnlyRoutes = [
-    '/authentication/login',
-    '/authentication/register',
-]
- 
 export default async function middleware(req: NextRequest) {
     const session = await getSession()
     const isUserAuthorized = Boolean(session?.userId)
-    
-    const path = req.nextUrl.pathname
-    const isAuthorizedOnlyRoutes = authorizedOnlyRoutes.includes(path)
-    if (isAuthorizedOnlyRoutes && !isUserAuthorized) {
+
+    const currentPath = req.nextUrl.pathname
+    const routeConfig = Object.values(routesConfig).filter(route => route.route == currentPath)[0]
+
+    const isAuthenticatedOnly = routeConfig.authenticatedOnly
+    if (!isAuthenticatedOnly && !isUserAuthorized) {
         return NextResponse.redirect(new URL('/authentication/login', req.nextUrl))
     }
-
-    const isUnauthorizedOnlyRoutes = unauthorizedOnlyRoutes.includes(path)
-    if (isUnauthorizedOnlyRoutes && isUserAuthorized) {
-        return NextResponse.redirect(new URL('/profile/basic_details', req.nextUrl))
+    
+    const isPublicOnly = routeConfig.publicOnly
+    if (isPublicOnly && isUserAuthorized) {
+        return NextResponse.redirect(new URL('/user/profile/basic_details', req.nextUrl))
     }
 
     return NextResponse.next()

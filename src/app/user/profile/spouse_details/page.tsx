@@ -1,12 +1,12 @@
 import { getUserAndProfileData } from "../actions";
-import SpouseDetailsForm from "@/components/features/profile/forms/SpouseDetailsForm";
+import SpouseDetailsForm from "@/components/features/user/profile/forms/SpouseDetailsForm";
 import { redirect } from "next/navigation";
 
 const handler = async () =>  {
     const { user, profile } = await getUserAndProfileData()
 
     if (profile.marital_status != "Married") {
-        redirect("/profile/basic_details/")
+        redirect("/user/profile/basic_details/")
     }
 
     return (

@@ -36,5 +36,5 @@ export const login = async (
 
     await createSession(user.id, remember_me)
 
-    redirect('/profile/basic_details')
+    redirect('/user/profile/basic_details')
 }

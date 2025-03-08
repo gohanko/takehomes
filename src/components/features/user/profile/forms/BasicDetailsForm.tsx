@@ -1,12 +1,12 @@
 "use client"
 
 import Form from "@/components/ui/Form"
-import { editBasicDetails } from "@/app/profile/basic_details/actions"
+import { editBasicDetails } from "@/app/user/profile/basic_details/actions"
 import { SALUTATIONS } from "@/constants/salutations"
 import { useActionState, useState } from "react"
-import { TUserAndProfile } from "@/app/profile/actions"
+import { TUserAndProfile } from "@/app/user/profile/actions"
 import Alert from "@/components/ui/alert"
-import { ImageUploader } from "@/components/features/profile/image-uploader"
+import { ProfilePicture } from "@/components/features/user/profile/profile-picture"
 
 const BasicDetailsForm = ({
     user,
@@ -92,7 +92,7 @@ const BasicDetailsForm = ({
             </Form>
 
             <div className="flex flex-col">
-                <ImageUploader imageUrl={profile.profile_picture_url} />
+                <ProfilePicture imageUrl={profile.profile_picture_url} />
             </div>
         </div>
     )

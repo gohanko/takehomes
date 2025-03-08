@@ -14,22 +14,22 @@ const NavigationSideMenu = ({
     const menuItems = [
         {
             label: "Basic Details",
-            link: "/profile/basic_details",
+            link: "/user/profile/basic_details",
         },
         {
             label: "Additional Details",
-            link: "/profile/additional_details"
+            link: "/user/profile/additional_details"
         },
         {
             label: "Personal Preferences",
-            link: "/profile/personal_preferences"
+            link: "/user/profile/personal_preferences"
         }
     ]
 
     if (profile.marital_status == 'Married') {
         menuItems.splice(2, 0, {
             label: "Spouse Details",
-            link: "/profile/spouse_details"
+            link: "/user/profile/spouse_details"
         },)
     }
 

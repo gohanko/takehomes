@@ -1,7 +1,7 @@
 import { isSupportedImage } from "@/utility/file_format_validation"
 import { useState } from "react"
 
-export const useUploadFile = () => {
+export const useUploadProfilePicture = () => {
     const [isUploading, setIsUploading] = useState<boolean>(false)
     const [message, setMessage] = useState<string>()
     const [errorMessage, setErrorMessage] = useState<string>()
@@ -27,7 +27,7 @@ export const useUploadFile = () => {
         formData.append('file', file)
         
         setIsUploading(true)
-        const response = await fetch("/api/file_upload", {
+        const response = await fetch("/api/upload_profile_picture", {
             method: "PUT",
             body: formData
         })
