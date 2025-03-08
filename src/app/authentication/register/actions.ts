@@ -1,7 +1,7 @@
 "use server"
 
 import { redirect } from 'next/navigation'
-import { createUser } from '@/services/database/user'
+import { createUser, getUserByEmail, getUserById } from '@/services/database/user'
 import { createProfile } from '@/services/database/profile'
 import { calculateAge } from '@/utility/date-manipulation'
 import { RegisterFormSchema } from './schema'
@@ -50,14 +50,14 @@ export const register = async (
         }
     }
 
-    try {
-        const user = await createUser(email, password)
-        await createProfile(user.id, first_name, last_name, date_of_birth)
-    } catch (error) {
+    const user = await getUserByEmail(email)
+    if (user) {
         return {
             message: "An error occured while creating your account."
         }
     }
 
+    const newUser = await createUser(email, password)
+    await createProfile(newUser.id, first_name, last_name, date_of_birth)
     return redirect(routesConfig.authentication_login.route)
 }
