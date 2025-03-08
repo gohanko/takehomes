@@ -50,13 +50,15 @@ export const register = async (
         }
     }
 
-    const user = await createUser(email, password)
-    if (!user) {
+    try {
+        const user = await createUser(email, password)
+        await createProfile(user.id, first_name, last_name, date_of_birth)
+    } catch (error) {
+        console.log(String(error))
         return {
             message: "An error occured while creating your account."
         }
     }
 
-    await createProfile(user.id, first_name, last_name, date_of_birth)
-    redirect(routesConfig.authentication_login.route)
+    return redirect(routesConfig.authentication_login.route)
 }

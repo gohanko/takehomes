@@ -30,12 +30,11 @@ export const PUT = async (request: NextRequest) => {
 
     const { url } = await put(`${filename}`, buffer, { access: 'public' })
     await updateProfileByUserId(profile.id, { profile_picture_url: url })
-
+    
     const fileUploadResponse: TFileUploadResponse = {
         success: true,
         message: "File is successfully uploaded!",
         filepath: url,
     }
-
     return NextResponse.json(fileUploadResponse, { status: 201 })
 }
