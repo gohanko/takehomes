@@ -1,7 +1,7 @@
 "use server"
 
 import { redirect } from 'next/navigation'
-import { createUser, getUserByEmail, getUserById } from '@/services/database/user'
+import { createUser, getUserByEmail } from '@/services/database/user'
 import { createProfile } from '@/services/database/profile'
 import { calculateAge } from '@/utility/date-manipulation'
 import { RegisterFormSchema } from './schema'
