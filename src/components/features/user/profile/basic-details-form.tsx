@@ -16,7 +16,7 @@ export const BasicDetailsForm = ({
     const [state, action] = useActionState(editBasicDetails, undefined)
 
     return (
-        <div className="flex flex-row gap-5">
+        <div className="flex flex-col-reverse lg:flex-row gap-5">
             <Form action={action} className="flex-1">
                 { state?.message && (
                     <Alert>{ state.message }</Alert>
