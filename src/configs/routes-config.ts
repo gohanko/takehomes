@@ -1,3 +1,4 @@
+
 export const routesConfig: TRoutesConfig = {
     authentication_login: {
         route: "/authentication/login",

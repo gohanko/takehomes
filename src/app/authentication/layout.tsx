@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { BackgroundImage } from "@/components/ui/background-image";
-import authBg from "../../../public/auth_bg.jpg";
+import authBg from "@/../public/authentication-background.jpg";
 
 const Layout = ({
     children

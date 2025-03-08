@@ -36,7 +36,7 @@ export const Navbar = () => (
                     </li>
                 </ul>
             </div>
-            <a className="btn btn-ghost text-xl">Convertium TakeHome Application</a>
+            <a className="btn btn-ghost text-xl">React/NextJS Take Home Application</a>
         </div>
     </div>
 )

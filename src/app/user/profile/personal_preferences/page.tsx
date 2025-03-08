@@ -1,6 +1,10 @@
+import { Metadata } from "next";
 import { getUserAndProfileData } from "../actions";
 import { PersonalPreferencesForm } from "@/components/features/user/profile/personal-preferences-form";
 
+export const metadata: Metadata = {
+    title: "Personal Preferences- React/NextJS Take Home Application",
+};
 
 const handler = async () =>  {
     const { user, profile } = await getUserAndProfileData()

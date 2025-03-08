@@ -1,4 +1,4 @@
-# convertium-takehome
+# react-nextjs-takehome
 This is a simple NextJS application to demonstrate ability to work on React frontend, and NextJS backend.
 
 ## Features

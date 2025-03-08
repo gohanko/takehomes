@@ -2,6 +2,12 @@ import Link from 'next/link'
 import { FormCard } from "@/components/ui/form-card";
 import { RegisterForm } from "@/components/features/authentication/registration-form";
 import { routesConfig } from '@/configs/routes-config';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Register - React/NextJS Take Home Application",
+    description: "Register an account on React/NextJS Take Home Application!",
+};
 
 const handler = () => (
     <FormCard>

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Convertium TakeHome Application",
-    description: "A takehome application for Convertium",
+    title: "React/NextJS Take Home Application",
+    description: "A takehome application to demonstrate React/NextJS abilities",
 };
 
 const Layout = ({

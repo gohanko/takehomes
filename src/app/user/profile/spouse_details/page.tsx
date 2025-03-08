@@ -1,7 +1,12 @@
 import { getUserAndProfileData } from "../actions";
 import { SpouseDetailsForm } from "@/components/features/user/profile/spouse-details-form";
 import { routesConfig } from "@/configs/routes-config";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+    title: "Spouse Details - React/NextJS Take Home Application",
+};
 
 const handler = async () =>  {
     const { user, profile } = await getUserAndProfileData()
