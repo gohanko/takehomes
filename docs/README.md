@@ -37,6 +37,9 @@ This is required because we need to store authentication, and profile data. You 
 
 So, essentially you need to deploy an empty **PostgreSQL** database, either locally, serverlessly, or on some VPS. The important part here is that it should be accessible to the application.
 
+### Deploying Vercel Blob
+
+
 ### Configuring and setting up the application
 This part is on configuring and setting up the application.
 
@@ -44,6 +47,7 @@ This part is on configuring and setting up the application.
 2. Create a `.env` file in the root folder, and set the following environment variables:
     - **DATABASE_URL** - This URL is used to access the database, if you can use this URL to access the database, then it should work here too. Make sure it starts with `postgresql://`.
     - **SESSION_SECRET** - This is a secret key used to sign JWT tokens for authentication. It can be any string, but if you want it to be secure, you can run the following: `openssl rand -base64 32`.
+    - **BLOB_READ_WRITE_TOKEN** - 
 3. Set up the database tables using `npm run db:migrate`. 
 4. Start the entire thing through `npm run dev`.
 

@@ -1,4 +1,5 @@
 "use client"
+
 import Image from "next/image";
 import { Form } from "@/components/ui/form";
 import { useUploadProfilePicture } from "@/hooks/use-upload-profile-picture"
