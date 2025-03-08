@@ -1,5 +1,5 @@
  
 type FormState = {
-    errors?: {}
+    errors?: object
     message?: string
 } | undefined

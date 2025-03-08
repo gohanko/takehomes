@@ -1,5 +1,5 @@
 type TFileUploadResponse = {
     success: boolean,
-    message: String,
-    filepath: String,
+    message: string,
+    filepath: string,
 }

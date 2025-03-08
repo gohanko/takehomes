@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation'
 import { createUser } from '@/services/database/user'
 import { createProfile } from '@/services/database/profile'
-import { calculateAge } from '@/utility/date'
+import { calculateAge } from '@/utility/date-manipulation'
 import { RegisterFormSchema } from './schema'
 
 export const register = async (

@@ -1,12 +1,12 @@
 import classNames from "classnames";
-import { FormButton } from "./form_button";
-import { FormInput } from "./form_input";
-import { FormCheckbox } from "./form_checkbox";
-import { FormSelect } from "./form_select";
-import { FormHorizontal } from "./form_horizontal";
+import { FormButton } from "./form-button";
+import { FormInput } from "./form-input";
+import { FormCheckbox } from "./form-checkbox";
+import { FormSelect } from "./form-select";
+import { FormHorizontal } from "./form-horizontal";
 import { Divider } from "../divider";
-import { FormTextField } from "./form_textfield";
-import { FormFileInput } from "./form_file_input";
+import { FormTextField } from "./form-textfield";
+import { FormFileInput } from "./form-file-input";
 
 interface TFormProps {
     children: React.ReactNode,

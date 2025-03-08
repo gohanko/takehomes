@@ -1,5 +1,5 @@
-import { FormCardHeaderSubtitle } from "./form_card_header_subtitle"
-import { FormCardHeaderTitle } from "./form_card_header_title"
+import { FormCardHeaderSubtitle } from "./form-card-header-subtitle"
+import { FormCardHeaderTitle } from "./form-card-header-title"
 
 type TFormCardHeaderProps = {
     children?: React.ReactNode,

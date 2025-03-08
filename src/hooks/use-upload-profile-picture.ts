@@ -1,4 +1,4 @@
-import { isSupportedImage } from "@/utility/file_format_validation"
+import { isSupportedImage } from "@/utility/file-format-validation"
 import { useState } from "react"
 
 export const useUploadProfilePicture = () => {

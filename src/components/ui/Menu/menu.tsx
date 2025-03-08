@@ -1,4 +1,4 @@
-import { MenuItem } from "./menu_item";
+import { MenuItem } from "./menu-item";
 
 type TMenuProps = {
     children: React.ReactNode[]

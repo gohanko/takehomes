@@ -1,5 +1,5 @@
-import { FormCardHeader } from "./form_card_header"
-import { FormCardBody } from "./form_card_body"
+import { FormCardHeader } from "./form-card-header"
+import { FormCardBody } from "./form-card-body"
 
 type TFormCardProps = {
     children: React.ReactNode,

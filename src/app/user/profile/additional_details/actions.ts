@@ -1,7 +1,7 @@
 "use server"
 
 import { updateProfileByUserId } from "@/services/database/profile"
-import { calculateAge, formatDateToISO } from "@/utility/date"
+import { calculateAge, formatDateToISO } from "@/utility/date-manipulation"
 import { redirect } from "next/navigation"
 import { z } from "zod"
 import { getSession } from "@/services/session/session"

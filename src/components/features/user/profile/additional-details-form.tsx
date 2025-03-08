@@ -6,7 +6,7 @@ import { GENDER, MARITAL_STATUS } from "@/constants/forms"
 import { TUserAndProfile } from "@/app/user/profile/actions"
 import { useActionState, useState } from "react"
 import { Alert } from "@/components/ui/alert"
-import { deductYearsFromDate } from "@/utility/date"
+import { deductYearsFromDate } from "@/utility/date-manipulation"
 
 export const AdditionalDetailsForm = ({
     profile

@@ -1,5 +1,5 @@
 import { getUserAndProfileData } from "../actions";
-import { SpouseDetailsForm } from "@/components/features/user/profile/forms/SpouseDetailsForm";
+import { SpouseDetailsForm } from "@/components/features/user/profile/spouse-details-form";
 import { redirect } from "next/navigation";
 
 const handler = async () =>  {
