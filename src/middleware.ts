@@ -1,15 +1,18 @@
 "use server"
 
 import { NextRequest, NextResponse } from 'next/server'
-import { getSession } from './services/session/session'
-import { routesConfig } from './configs/routes-config'
+import { getSession } from '@/services/session/session'
+import { routesConfig } from '@/configs/routes-config'
 
-export default async function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
     const session = await getSession()
     const isUserAuthorized = Boolean(session?.userId)
 
     const currentPath = req.nextUrl.pathname
     const routeConfig: TRoutes = Object.values(routesConfig).filter(route => route.route == currentPath)[0]
+    if (!routeConfig) {
+        return NextResponse.next()
+    }
 
     const isAuthenticatedOnly = routeConfig.authenticatedOnly
     if (isAuthenticatedOnly && !isUserAuthorized) {
@@ -26,5 +29,5 @@ export default async function middleware(req: NextRequest) {
  
 // Routes that the middleware should not run on
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|).*)'],
-}
+    matcher: ['/((?!_next/static|_next/image|.*\\.png$).*)'],
+  }

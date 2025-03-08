@@ -12,8 +12,8 @@ export const routesConfig: TRoutesConfig = {
     },
     api_authentication_logout: {
         route: "/api/authentication/logout",
-        authenticatedOnly: false,
-        publicOnly: true,
+        authenticatedOnly: true,
+        publicOnly: false,
     },
     user_profile_basic_details: {
         route: "/user/profile/basic_details",
