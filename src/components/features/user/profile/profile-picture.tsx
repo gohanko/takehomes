@@ -39,7 +39,7 @@ export const ProfilePicture = ({
             </div>
 
             <Form.FileInput 
-                legend="Select a image"
+                legend="Select your profile picture"
                 onChange={onChange}
                 label={message || errorMessage}
             />
