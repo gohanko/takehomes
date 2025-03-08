@@ -4,7 +4,7 @@ import { updateProfileByUserId } from "@/services/database/profile";
 import { getUserAndProfileData } from "@/app/user/profile/actions";
 
 export const PUT = async (request: NextRequest) => {
-    const { profile } = await getUserAndProfileData()
+    const { user, profile } = await getUserAndProfileData()
 
     const formData = await request.formData()
     const body = Object.fromEntries(formData);
@@ -24,12 +24,12 @@ export const PUT = async (request: NextRequest) => {
     const filename = (body.file as File).name
 
     if (profile.profile_picture_url) {
-        await updateProfileByUserId(profile.id, { profile_picture_url: "" })
+        await updateProfileByUserId(user.id, { profile_picture_url: "" })
         del(profile.profile_picture_url)
     }
 
     const { url } = await put(`${filename}`, buffer, { access: 'public' })
-    await updateProfileByUserId(profile.id, { profile_picture_url: url })
+    await updateProfileByUserId(user.id, { profile_picture_url: url })
     
     const fileUploadResponse: TFileUploadResponse = {
         success: true,
