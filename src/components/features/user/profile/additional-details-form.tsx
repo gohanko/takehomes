@@ -1,6 +1,6 @@
 "use client"
 
-import { Form } from "@/components/ui/Form"
+import { Form } from "@/components/ui/form"
 import { editAdditionalDetails } from "@/app/user/profile/additional_details/actions"
 import { GENDER, MARITAL_STATUS } from "@/constants/forms"
 import { TUserAndProfile } from "@/app/user/profile/actions"

@@ -9,7 +9,7 @@ export default async function middleware(req: NextRequest) {
     const isUserAuthorized = Boolean(session?.userId)
 
     const currentPath = req.nextUrl.pathname
-    const routeConfig = Object.values(routesConfig).filter(route => route.route == currentPath)[0]
+    const routeConfig: TRoutes = Object.values(routesConfig).filter(route => route.route == currentPath)[0]
 
     const isAuthenticatedOnly = routeConfig.authenticatedOnly
     if (isAuthenticatedOnly && !isUserAuthorized) {

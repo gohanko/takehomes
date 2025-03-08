@@ -2,7 +2,7 @@
 
 import { useActionState } from 'react'
 import { register } from "@/app/authentication/register/actions";
-import { Form } from "@/components/ui/Form";
+import { Form } from "@/components/ui/form";
 import { Alert } from '@/components/ui/alert';
 import { deductYearsFromDate } from '@/utility/date-manipulation';
 

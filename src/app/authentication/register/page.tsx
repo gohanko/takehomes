@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FormCard } from "@/components/ui/FormCard";
+import { FormCard } from "@/components/ui/form-card";
 import { RegisterForm } from "@/components/features/authentication/registration-form";
 import { routesConfig } from '@/configs/routes-config';
 

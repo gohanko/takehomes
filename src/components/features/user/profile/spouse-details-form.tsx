@@ -1,6 +1,6 @@
 "use client"
 
-import { Form } from "@/components/ui/Form"
+import { Form } from "@/components/ui/form"
 import { editSpouseDetails } from "@/app/user/profile/spouse_details/actions"
 import { SALUTATIONS } from "@/constants/forms"
 import { useActionState, useState } from "react"

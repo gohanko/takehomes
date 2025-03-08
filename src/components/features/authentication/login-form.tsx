@@ -1,7 +1,7 @@
 "use client"
 
 import { login } from "@/app/authentication/login/actions";
-import { Form } from "@/components/ui/Form";
+import { Form } from "@/components/ui/form";
 import { useActionState } from "react";
 import { Alert } from "@/components/ui/alert";
 

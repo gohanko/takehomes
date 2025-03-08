@@ -1,6 +1,6 @@
 "use client"
 
-import { Menu } from "@/components/ui/Menu"
+import { Menu } from "@/components/ui/menu"
 import { routesConfig } from "@/configs/routes-config"
 import { Profile } from "@prisma/client"
 import { usePathname } from "next/navigation"

@@ -1,6 +1,6 @@
 "use client"
 
-import { Form } from "@/components/ui/Form"
+import { Form } from "@/components/ui/form"
 import { TUserAndProfile } from "@/app/user/profile/actions"
 import { useActionState, useState } from "react"
 import { editPersonalPreferences } from "@/app/user/profile/personal_preferences/actions"
