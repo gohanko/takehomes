@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Gender {
+  Male
+  Female
+}
+
+enum MaritalStatus {
+  Single
+  Married
+  Divorced
+}
+
+enum Salutation {
+  Mr
+  Mrs
+  Ms
+}
+
+model User {
+  id              Int      @id @default(autoincrement())
+  email           String   @unique
+  hashed_password String
+  profile         Profile?
+}
+
+model Profile {
+  id      Int  @id @default(autoincrement())
+  user    User @relation(fields: [user_id], references: [id])
+  user_id Int  @unique
+
+  profile_picture_url String?
+
+  salutations   Salutation?
+  first_name    String
+  last_name     String
+  date_of_birth DateTime?
+  gender        Gender?
+
+  marital_status    MaritalStatus?
+  spouse_salutation Salutation?
+  spouse_first_name String?
+  spouse_last_name  String?
+
+  street_number String?
+  street_name   String?
+  postcode      String?
+  city_town     String?
+  state         String?
+
+  interests String?
+  sports    String?
+  music     String?
+  movie_tv  String?
+}
